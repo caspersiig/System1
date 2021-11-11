@@ -1,0 +1,25 @@
+{
+  "name": "system1",
+  "version": "1.0.0",
+  "description": "Velkommen til vores 3 semsters sum projekt",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caspersiig/System1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caspersiig/System1/issues"
+  },
+  "homepage": "https://github.com/caspersiig/System1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "pug": "^3.0.2"
+  }
+}
