@@ -5,13 +5,13 @@ const app = express()
 
 const port = 3000
 
-app.set('view engine', 'pug')
+//app.set('view engine', 'pug')
 
 app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-  res.sendFile("hello world")
+    res.sendFile((__dirname) + "/public/HTML/index.html")
 })
 
 app.listen(port, () => {
