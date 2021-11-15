@@ -1,16 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Teko:wght@700&display=swap');
 
 :root {
     --color_brown: #241819;
-    --color_yellow: #dfc20b;
-    --color_yellow2: #FFE22C;
-    --color_white: #f2f3ee;
+    --color_yellow: #FFE22C;
+    --color_white: #FFFFFF;
     
     --primary_font: 'Noto Sans', sans-serif;
-    --primary_font2: 'Nunito', sans-serif;
-    --primary_font3: 'Teko', sans-serif;
   }
 
 #lorem{

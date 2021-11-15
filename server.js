@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 //PUG
 app.get('/pug', (req, res) => {
-  res.render('template', { title: 'PUG', message: 'CASPER has aine Genitalia ^.^' })
+  res.render('header', {message: 'CASPER has aine Genitalia ^.^' })
 });
 
 

@@ -1,7 +1,20 @@
 doctype html
 html(lang='en')
- head
-   title= title
- body
-   h1= message
-   img(src="IMG/2.png" alt="")
+head
+  link(rel="stylesheet" href="/CSS/header.css")
+body
+  div(class='header')
+    div(class='center_header')
+      button(class='button') Home
+      button(class='button') Menu 
+      button(class='button') Kontakt
+      div(class='cart_div')
+        a(href="/Cart" class='cart_info') 
+          img(src="/IMG/cart.png", href alt="" class='cart_img')
+          p(class='cart_txt') 10,-kr.
+
+
+          
+
+
+
