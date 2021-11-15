@@ -19,13 +19,13 @@ app.use(express.static('public'));
 //HTML
 app.get('/', (req, res) => {
     res.sendFile((__dirname) + "/public/HTML/index.html")
-})
+});
 
 
 //PUG
 app.get('/pug', (req, res) => {
-  res.render('template', { title: 'PUG', message: 'CASPER SUTTER TISSEMAND' })
-})
+  res.render('template', { title: 'PUG', message: 'CASPER has aine Genitalia ^.^' })
+});
 
 
 
