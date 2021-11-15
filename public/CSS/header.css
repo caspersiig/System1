@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
 
+
 :root {
     --color_brown: #241819;
     --color_yellow: #FFE22C;
+    --color_yellow_hover: rgb(230, 205, 49);
     --color_white: #FFFFFF;
     
     --primary_font: 'Noto Sans', sans-serif;
@@ -20,46 +22,66 @@ body{
     height: 4.5em;    
     background-color: var(--color_yellow);
     display: flex;
-    justify-content: center;    
-    padding: 5px;
+    justify-content: center;
+}
+
+.logo_img{
+    max-width: 100%;
+    height: 4.5em;
 }
 
 .center_header{
-    border: 1px solid black;
-    height: 4em;
+    height: 4.5em;
     display: flex;
     justify-content: center;   
-    width: 800px;
+    width: 1000px;
 }
 
 .cart_div{
-    display: inline-block;
-    height: 3em;   
+    position: absolute;
+    height: 100%;
+    width: 5em;
+    text-align: center;
+    margin-left: 85%;
 }
 
 .cart_info{
     text-decoration: none;
     color: var(--color_white);
-    border: 1px solid black;
     display: inline-block;
 }
 
 
 .button{
     font-family: var(--primary_font);
+    color: var(--color_white);
+    border: none;
+    font-size: 20px;
+    width: 125px;
 
+    background-color: transparent;
+}
+
+.button:hover, .cart_div:hover{
+    opacity: 0.9;
+    cursor: pointer;
+    background-color: var(--color_yellow_hover);
 }
 
 .cart_img{
-    max-height: 35px;
-    width: 100%;
+    padding-top: 20%;
+    margin-bottom: 0px;
+    height: 45px;
+    width: 45px;
+    transform: scaleX(-1);
 
 }
 
 .cart_txt{
-    font-size: 11px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    font-family: sans-serif;
+    position: absolute;
+    font-size: 14px;
+    top: 60%;
     text-decoration: none;
-    
+    font-weight: lighter;
 }

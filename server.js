@@ -31,7 +31,7 @@ app.get('/pugtest', (req, res) => {
 
   getMessages().then(list => {
     res.render('menu', list)
-    console.log(list[0].Børnemenu.Pris)
+    //console.log(list[0].Børnemenu.Pris)
   });
 
 });
