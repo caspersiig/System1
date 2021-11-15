@@ -17,13 +17,13 @@ app.use(express.static('public'));
 
 
 //HTML
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.sendFile((__dirname) + "/public/HTML/index.html")
-});
+}); */
 
 
 //PUG
-app.get('/pug', (req, res) => {
+app.get('/', (req, res) => {
   res.render('header', {message: 'CASPER has aine Genitalia ^.^' })
 });
 

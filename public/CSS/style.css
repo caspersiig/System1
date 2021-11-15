@@ -1,56 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
 
+
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
 :root {
     --color_brown: #241819;
     --color_yellow: #FFE22C;
+    --color_yellow_hover: rgb(230, 205, 49);
     --color_white: #FFFFFF;
     
     --primary_font: 'Noto Sans', sans-serif;
   }
 
-#lorem{
+
+#bg_img{
+    position: absolute;
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 80%;
+    max-width: 100%;
+}
+
+.window{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: -500px;
+    left: 50%;
+    width: 1000px;
+    height: 400px;
+    text-align: center;
+    background-color: #FFFFFF10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.title{
     font-family: var(--primary_font);
-    font-size: 25px;
-    border: 1px solid black;
+    display: inline-block;
+    font-size: 65px;
+    max-height: 30px;
+    color: var(--color_white);
+    letter-spacing: 4px;
 }
 
-#lorem2{
-    font-family: var(--primary_font2);
-    font-size: 25px;
-    border: 1px solid black;
+.sub_title{
+    font-family: var(--primary_font);
+    display: inline-block;
+    font-size: 20px;
+    color: var(--color_white);
+    letter-spacing: 1px;
+    margin-top: 0px;
 }
-
-#lorem3{
-    font-family: var(--primary_font3);
-    font-size: 25px;
-    border: 1px solid black;
-}
-
-#div1{
-    height: 5em;
-    width: 100%;
-    background-color: var(--color_brown);
-}
-
-#div2{
-    height: 5em;
-    width: 100%;
-    background-color: var(--color_yellow2);
-}
-
-#div22{
-    height: 5em;
-    width: 100%;
-    background-color: var(--color_yellow);
-}
-
-#div3{
-    height: 5em;
-    width: 100%;
-    background-color: var(--color_white);
-}
-
-.casper{
-    width: 150px;
-}
-

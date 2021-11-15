@@ -5,13 +5,18 @@ head
 body
   div(class='header')
     div(class='center_header')
-      button(class='button') Home
-      img(src="/IMG/logo.jpg", alt="" class="logo_img")
-      button(class='button') Menu 
+      form(action="/Home") 
+        button(class='button' type='submit') Home
+      img(src="/IMG/logo.png", alt="" class="logo_img")
+      form(action="/Menu") 
+        button(class='button' type='submit') Menu 
       div(class='cart_div')
-        a(href="mailto:ahmedsabah.oneplus@gmail.com" class='cart_info') 
+        a(href="/Cart" class='cart_info') 
           img(src="/IMG/cart.png", href alt="" class='cart_img')
           p(class='cart_txt') 1000 kr
+
+  include ../public/HTML/index.html
+
 
 
           

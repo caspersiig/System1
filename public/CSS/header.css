@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
 
 
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
 :root {
     --color_brown: #241819;
     --color_yellow: #FFE22C;
@@ -15,6 +18,7 @@ body{
     margin: 0px;
 }
 
+
 .header{
     font-family: var(--primary_font);
     position: fixed;
@@ -23,11 +27,14 @@ body{
     background-color: var(--color_yellow);
     display: flex;
     justify-content: center;
+    border-bottom-left-radius:40px;
+    border-bottom-right-radius:40px;
+    z-index: 10;
 }
 
 .logo_img{
     max-width: 100%;
-    height: 4.5em;
+    height: 5em;
 }
 
 .center_header{
@@ -37,26 +44,13 @@ body{
     width: 1000px;
 }
 
-.cart_div{
-    position: absolute;
-    height: 100%;
-    width: 5em;
-    text-align: center;
-    margin-left: 85%;
-}
-
-.cart_info{
-    text-decoration: none;
-    color: var(--color_white);
-    display: inline-block;
-}
-
 
 .button{
     font-family: var(--primary_font);
     color: var(--color_white);
     border: none;
     font-size: 20px;
+    height: 100%;
     width: 125px;
 
     background-color: transparent;
@@ -68,8 +62,23 @@ body{
     background-color: var(--color_yellow_hover);
 }
 
+
+.cart_div{
+    position: absolute;
+    height: 100%;
+    width: 125px;
+    text-align: center;
+    margin-left: 85%;
+}
+
+.cart_info{
+    text-decoration: none;
+    color: var(--color_white);
+    display: inline-block;
+}
+
 .cart_img{
-    padding-top: 20%;
+    padding-top: 10%;
     margin-bottom: 0px;
     height: 45px;
     width: 45px;
@@ -81,7 +90,7 @@ body{
     font-family: sans-serif;
     position: absolute;
     font-size: 14px;
-    top: 60%;
+    top: 55%;
     text-decoration: none;
     font-weight: lighter;
 }
