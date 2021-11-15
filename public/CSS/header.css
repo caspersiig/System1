@@ -88,6 +88,8 @@ body{
 
 .cart_txt{
     font-family: sans-serif;
+    font-variant: small-caps;
+    font-weight: 400;
     position: absolute;
     font-size: 14px;
     top: 55%;

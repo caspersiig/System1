@@ -19,17 +19,18 @@
     padding: 0;
     display: block;
     margin: 0 auto;
-    max-height: 80%;
+    max-height: 100%;
     max-width: 100%;
+    object-fit: none;
 }
 
 .window{
     position: absolute;
-    margin-top: 200px;
+    margin-top: 100px;
     margin-left: -500px;
     left: 50%;
     width: 1000px;
-    height: 400px;
+    height: 300px;
     text-align: center;
     background-color: #FFFFFF10;
     backdrop-filter: blur(12px);
@@ -45,6 +46,7 @@
     max-height: 30px;
     color: var(--color_white);
     letter-spacing: 4px;
+    margin: 20px;
 }
 
 .sub_title{
@@ -53,5 +55,5 @@
     font-size: 20px;
     color: var(--color_white);
     letter-spacing: 1px;
-    margin-top: 0px;
+    margin-top: 20px;
 }
