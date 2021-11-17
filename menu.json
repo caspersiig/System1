@@ -1,0 +1,138 @@
+
+{
+"menu":[{
+
+    "forretter":
+        [
+            {
+            "id": 1,
+            "title": "Vegetar Paratha",
+            "beskrivelse": "Traditionel indisk fladbrød med kartofler",
+            "pris": 59
+            },
+            {
+            "id": 2,
+            "title": "Beef Paratha",
+            "beskrivelse": "Traditionel indisk fladbrød med oksekød",
+            "pris": 59
+            },
+            {
+            "id": 3,
+            "title": "Beef Samosa 3 stk.",
+            "beskrivelse": "Indisk ret med oksekød, gulerødder og ærter lagt i dej",
+            "pris": 59
+            }   
+        ],
+
+    "tilbud":
+        [
+            {
+            "id": 1,
+            "title": "Tilbud 1",
+            "beskrivelse": "Stor butterchicken, 1 Roti/fladbrød og 1 Drikkevarer",
+            "pris": 119
+            },
+            {
+            "id": 2,
+            "title": "Tilbud 2",
+            "beskrivelse": "2 x Lille butterchicken, 2 Roti/Brød og 2 Drikkevarer",
+            "pris": 179
+            } 
+        ],
+
+    "hovedretter":
+        [
+            {
+            "id": 1,
+            "title": "Butter Chicken Lille",
+            "beskrivelse": "Klassisk kyllingeret med indiske krydderier og serveres med ris",
+            "pris": 79
+            },
+            {
+            "id": 2,
+            "title": "Butter Chicken Stor",
+            "beskrivelse": "Klassisk kyllingeret med indiske krydderier og serveres med ris",
+            "pris": 99
+            },
+            {
+            "id": 3,
+            "title": "Dhal Lille",
+            "beskrivelse": "Traditionel vegetarisk ret fra det indiske køkken med linser som central ingrediens",
+            "pris": 79
+            },
+            {
+            "id": 4,
+            "title": "Dhal Stor",
+            "beskrivelse": "Traditionel vegetarisk ret fra det indiske køkken med linser som central ingrediens",
+            "pris": 99
+            }
+        ],
+
+    "børneretter":
+        [
+            {
+            "id": 1,
+            "title": "Børnemenu",
+            "beskrivelse": "3 stk. forårsruller med oksekød og pommes frites",
+            "pris": 59
+            }
+        ],
+
+    "drikkevare":
+        [
+            {
+            "id": 1,
+            "title": "Pepsi Max",
+            "beskrivelse": "",
+            "pris": 20
+            },
+            {
+            "id": 2,
+            "title": "Coca Cola",
+            "beskrivelse": "",
+            "pris": 20
+            },
+            {
+            "id": 3,
+            "title": "Vand",
+            "beskrivelse": "",
+            "pris": 15
+            },
+            {
+            "id": 4,
+            "title": "Gazos",
+            "beskrivelse": "",
+            "pris": 20
+            }
+        ],
+
+    "tilbehør":
+        [
+            {
+            "id": 1,
+            "title": "Pommes Frites Lille",
+            "beskrivelse": "",
+            "pris": 29
+            },
+            {
+            "id": 2,
+            "title": "Pommes Frites Stor",
+            "beskrivelse": "",
+            "pris": 39
+            },
+            {
+            "id": 3,
+            "title": "Roti",
+            "beskrivelse": "Indisk fladbrød",
+            "pris": 12
+            },
+            {
+            "id": 4,
+            "title": "Myntesovs",
+            "beskrivelse": "Passer godt til samosaer og paratha",
+            "pris": 10
+            }
+        ]
+    }]
+
+}
