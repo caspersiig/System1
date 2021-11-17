@@ -2,11 +2,11 @@
   "name": "system1",
   "version": "1.0.0",
   "description": "Velkommen til vores 3 semsters sum projekt",
-  "main": "server.js",
+  "main": "routes/server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "mocha",
+    "start": "nodemon routes/server.js"
   },
   "repository": {
     "type": "git",
