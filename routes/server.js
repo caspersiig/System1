@@ -44,14 +44,11 @@ app.get('/', (req, res) => {
 
 //PUG /menu
 app.get('/menu', (req, res) => {
-  res.render('pug/menu.pug', {message: 'message?' })
-});
-
-app.get('/pugtest', (req, res) => {
   getMessages().then(list => {
-    res.render('pug/menu', list)
+    res.render('pug/menu.pug', {items:list}) // items er faktisk et array i know its crazy
     console.log(list)
   });
+  
 });
 
 //POST method til addToCart -- ligger produkt i session_memory 
