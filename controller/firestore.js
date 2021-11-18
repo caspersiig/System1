@@ -48,7 +48,7 @@ const db = getFirestore(app2);
 
 //const analytics = getAnalytics(app);
 
-async function getMessages(){
+export default async function getMessages(){
     const messageCol = collection(db,'Menu')
     const messageSnapshot = await getDocs(messageCol)
     console.log()
@@ -60,4 +60,5 @@ async function getMessages(){
     })
     return messageList
 }
+
 //hvad gør vi nu?!

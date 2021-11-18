@@ -1,6 +1,13 @@
-include header.pug 
-br
-br
-br
-br
-p 
+HTML
+head 
+    link(rel="stylesheet", href="../CSS/menu.css")
+    script(defer src="../JS/addToCartEvent.js") 
+body
+    include header.pug 
+    div(style="padding-top: 8%;")
+        div(class="produkt")
+            img(src="../IMG/1.jpg", alt="" class="produkt_img")
+            h1(class="produkt_title") my item 
+            h2(class="produkt_pris") 40kr
+            button(type="button" class="addBtn") add to cart
+
