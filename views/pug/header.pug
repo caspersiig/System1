@@ -13,7 +13,11 @@ body
       div(class='cart_div')
         a(href="/Cart" class='cart_info') 
           img(src="/IMG/cart.png", href alt="" class='cart_img')
-          p(class='cart_txt') 1000 kr
+          if quantity != 0
+            p(id="cart_quantity")= quantity
+          else 
+          
+          p(class='cart_txt')= total + "  DKK"
 
 
 

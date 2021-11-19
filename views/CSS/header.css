@@ -72,34 +72,48 @@ body{
     position: absolute;
     height: 100%;
     width: 125px;
-    text-align: center;
     margin-left: 85%;
+    text-align: center;
 }
 
 .cart_info{
     text-decoration: none;
     color: var(--color_white);
     display: inline-block;
+    height: 100%;
+    width: 100%;
 }
 
 .cart_img{
-    padding-top: 10%;
-    margin-bottom: 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
     height: 45px;
     width: 45px;
     transform: scaleX(-1);
+}
 
+#cart_quantity{
+    position: absolute;
+    font-size: 15px;
+    top: 2%;
+    left: 55%;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    width: 18px;
+    text-align: center;
+    margin: 0%;
 }
 
 .cart_txt{
-    font-family: sans-serif;
+    font-weight: bold;
     font-variant: small-caps;
-    font-weight: 400;
     position: absolute;
     font-size: 14px;
+    letter-spacing: 1px;
+    width: 100%;
     top: 55%;
     text-decoration: none;
-    font-weight: lighter;
 }
 
 @keyframes logoScale{

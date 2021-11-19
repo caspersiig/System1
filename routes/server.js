@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  console.log(cart_summary)
+  //console.log(cart_summary)
 
   res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity })
 });
@@ -74,7 +74,7 @@ app.post('/postdata', urlencodedParser,(req, res) => {
 
   req.session.cart = cart;
   
-  console.log(req.session.cart)
+  //console.log(req.session.cart)
 
   res.sendStatus(200)
 })
