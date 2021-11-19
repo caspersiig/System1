@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+
+
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
+:root {
+    --color_brown: #241819;
+    --color_yellow: #FFE22C;
+    --color_yellow_hover: #E6CD31;
+    --color_white: #FFFFFF;
+    --color_black: #000000;
+    --color_grey: #616161;
+    --color_lighter_grey: #b8b8b8;
+
+    
+    --primary_font: 'Noto Sans', sans-serif;
+  }
+
+#dent{
+  padding-bottom: 85px;
+}
+
+#body{
+    font-family: var(--primary_font);
+    width: 800px;
+    margin: 0 auto;
+    background-color: var(--color_white);
+}
+
+#cartTitle{
+  text-align: center;
+}
+
+#table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#th_product{
+  text-align: center;
+}
+
+#th_price{
+  text-align: right;
+}
+
+#th_quantity{
+  text-align: right;
+
+}
+
+#th_total{
+  text-align: right;
+
+}
+
+tr{
+  border-top: 1px solid var(--color_lighter_grey);
+  border-bottom: 1px solid var(--color_lighter_grey);
+}
+
+
+.tc_product{
+  padding: 10px;
+  display: inline-flex;
+  position: relative;
+}
+
+.product_img{
+  max-height: 100%;
+  width: 125px;
+}
+
+.product_title{
+  width: 100%;
+  padding-left: 100%;
+  position:absolute;
+    top: 30%;
+    bottom: 30%;
+    overflow: hidden;
+}
+
+.tc_price{
+  color: var(--color_grey);
+  text-align: right;
+}
+
+.product_price{
+  display: inline-block;
+}
+
+.tc_quantity{
+  text-align: right;
+}
+
+.product_quantity{
+  display: inline-block;
+}
+
+
+.tc_total{
+  color: var(--color_grey);
+  text-align: right;
+}
+
+.product_total{
+  display: inline-block;
+}
+
+
+.tc_cancel{
+  text-align: center;
+  padding-left: 35px;
+}
+
+.cancel_btn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+}
+
+.cancel{
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+}
+
+
+
+

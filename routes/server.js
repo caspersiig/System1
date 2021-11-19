@@ -3,6 +3,8 @@ import express from "express";
 import pug from "pug";
 
 import getMessages from "../controller/firestore.js"
+import cartSum from "../controller/cartSumControl.js"
+
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -39,14 +41,26 @@ app.use(express.static('views'));
 
 //PUG /home
 app.get('/', (req, res) => {
-  res.render('pug/header.pug', {message: 'message?' })
+  let cart = req.session.cart || [];
+  let cart_summary = cartSum(cart);
+
+  console.log(cart_summary)
+
+  res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity })
+});
+
+//PUG /cart
+app.get('/Cart', (req, res) => {
+  let cart = req.session.cart || [];
+
+  res.render('pug/cart.pug', {  list: cart  })
 });
 
 //PUG /menu
 app.get('/menu', (req, res) => {
   getMessages().then(list => {
-    res.render('pug/menu.pug', {items:list}) // items er faktisk et array i know its crazy
-    console.log(list)
+    res.render('pug/menu.pug', {items:list}) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
+    //console.log(list)
   });
   
 });
@@ -54,12 +68,13 @@ app.get('/menu', (req, res) => {
 //POST method til addToCart -- ligger produkt i session_memory 
 app.post('/postdata', urlencodedParser,(req, res) => {
   let data = req.body
-  let cart = req.session.cart || [];  
-  console.log(data)
+  let cart = req.session.cart || [];
 
   cart.push(data);
 
-  //console.log(req.session.cart)
+  req.session.cart = cart;
+  
+  console.log(req.session.cart)
 
   res.sendStatus(200)
 })

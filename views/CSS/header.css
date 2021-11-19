@@ -34,7 +34,8 @@ body{
 
 .logo_img{
     max-width: 100%;
-    height: 5em;
+    height: 4.5em;
+    animation: logoScale 3s alternate infinite;
 }
 
 .center_header{
@@ -54,6 +55,10 @@ body{
     width: 125px;
 
     background-color: transparent;
+}
+
+.f_button{
+    height: 100%;
 }
 
 .button:hover, .cart_div:hover{
@@ -95,4 +100,16 @@ body{
     top: 55%;
     text-decoration: none;
     font-weight: lighter;
+}
+
+@keyframes logoScale{
+    0%
+    {   
+        transform: scale(100%);
+    }
+
+    100%
+    {
+        transform: scale(110%);
+    }
 }

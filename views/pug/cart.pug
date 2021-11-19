@@ -1,0 +1,34 @@
+HTML 
+head 
+    title My Cart
+    link(rel="stylesheet", href="../CSS/cart.css")
+    script(defer src="../JS/cancelCartEvent.js") 
+
+    include header.pug
+body
+    div(id="dent")
+    div(id="body")
+        h1(id="cartTitle") Shopping cart
+        table(id="table")
+            tr
+                th(id="th_product") Product 
+                th(id="th_price") Unit Price 
+                th(id="th_quantity") Quantity 
+                th(id="th_total") Total Price
+            each item in list
+                tr
+                    td(class="tc_product")
+                        img(src=`${item.imgsrc}` class="product_img")
+                        p(class="product_title")= item.titel 
+                    td(class="tc_price") 
+                        p(class="product_price")=item.pris + " DKK"
+                    td(class="tc_quantity")
+                        input(type="number" min="1" max="10" value="1")
+                    td(class="tc_total") 
+                        p(class="product_total")=item.pris + " DKK"
+                    td(class="tc_cancel")
+                        button(class="cancel_btn")
+                            img(src="../IMG/cancel.png" class="cancel")
+
+            
+

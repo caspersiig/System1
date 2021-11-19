@@ -51,8 +51,7 @@ const db = getFirestore(app2);
 export default async function getMessages(){
     const messageCol = collection(db,'Menu')
     const messageSnapshot = await getDocs(messageCol)
-    console.log()
-
+    
     const messageList = messageSnapshot.docs.map(doc =>{
        let data = doc.data()
        data.docID = doc.id

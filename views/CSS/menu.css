@@ -13,7 +13,9 @@
     --primary_font: 'Noto Sans', sans-serif;
   }
 
-
+body{
+    margin: 0px;
+}
 
 .produkt{
     position: relative;
