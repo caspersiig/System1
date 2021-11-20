@@ -46,20 +46,25 @@ app.get('/', (req, res) => {
 
   //console.log(cart_summary)
 
-  res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity })
+  res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
 //PUG /cart
 app.get('/Cart', (req, res) => {
   let cart = req.session.cart || [];
+  let cart_summary = cartSum(cart);
 
-  res.render('pug/cart.pug', {  list: cart  })
+  res.render('pug/cart.pug', {  list: cart, total: cart_summary.total, quantity: cart_summary.quantity  })
 });
 
 //PUG /menu
 app.get('/menu', (req, res) => {
+
+  let cart = req.session.cart || [];
+  let cart_summary = cartSum(cart);
+
   getMessages().then(list => {
-    res.render('pug/menu.pug', {items:list}) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
+    res.render('pug/menu.pug', {items:list, total: cart_summary.total, quantity: cart_summary.quantity }) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
     //console.log(list)
   });
   

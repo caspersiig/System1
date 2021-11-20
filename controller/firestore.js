@@ -49,6 +49,7 @@ const db = getFirestore(app2);
 //const analytics = getAnalytics(app);
 
 export default async function getMessages(){
+  
     const messageCol = collection(db,'Menu')
     const messageSnapshot = await getDocs(messageCol)
     
