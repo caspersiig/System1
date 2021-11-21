@@ -3,7 +3,7 @@ import express from "express";
 import pug from "pug";
 
 import getMessages from "../controller/firestore.js"
-import cartSum from "../controller/cartSumControl.js"
+import {cartSum} from "../controller/cartSumControl.js"
 
 
 import { dirname } from 'path';
@@ -65,7 +65,7 @@ app.get('/menu', (req, res) => {
 
   getMessages().then(list => {
     res.render('pug/menu.pug', {items:list, total: cart_summary.total, quantity: cart_summary.quantity }) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
-    //console.log(list)
+  //console.log(list)
   });
   
 });

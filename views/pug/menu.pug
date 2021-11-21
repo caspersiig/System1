@@ -5,14 +5,25 @@ head
 body
     include header.pug 
     div(style="padding-top: 8%;")
-        each val in items
-            each ret in val 
-                if typeof ret === 'object'
-                    div(class="produkt")
-                        img(src="../IMG/1.jpg", alt="" class="produkt_img")
-                        p(class="produkt_title")= val.docID
-                        p(class="produkt_pris")= ret.Pris +" -.kr"
-                        button(type="button" class="addBtn") add to cart
+        each val in items /* val = object/ map med alt informationen om alle retter(objecter) og et docid der siger hvilken titel de hører under */
+            div(class="bigProdukt")
+                each retnavn in Object.keys(val)
+                    if retnavn == "docID"
+                        h1(id="Madtitel")=val.docID
+                    else if val[retnavn].Pris == undefined 
+                        h3(id="underMadTitler")= retnavn 
+                        each retnavn1 in Object.keys(val[retnavn])
+                            div(class="produkt")
+                                img(src="../IMG/1.jpg", alt="" class="produkt_img")
+                                p(class="produkt_title")= retnavn1
+                                p(class="produkt_pris")= val[retnavn1].Pris +" -.kr"
+                                button(type="button" class="addBtn") add to cart
+                    else if retnavn != "docID"
+                        div(class="produkt")
+                            img(src="../IMG/1.jpg", alt="" class="produkt_img")
+                            p(class="produkt_title")= retnavn
+                            p(class="produkt_pris")= val[retnavn].Pris +" -.kr"
+                            button(type="button" class="addBtn") add to cart
 
 //val.docID
 

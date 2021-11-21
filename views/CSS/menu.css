@@ -17,6 +17,19 @@ body{
     margin: 0px;
 }
 
+#bigProdukt{
+    display:table;
+    width: 100%;
+}
+
+#Madtitel{
+    display:table-caption;
+}
+
+#underMadTitler{
+    display:table-header-group;
+}
+
 .produkt{
     position: relative;
     width: 400px;
@@ -25,6 +38,7 @@ body{
     padding: 8px;
     display: inline-flex;
     justify-content: space-around;
+    display:table-cell;
 }
 
 .produkt_img{

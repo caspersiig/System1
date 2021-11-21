@@ -1,6 +1,6 @@
 
 
-export default function cartSum(cart){
+export function cartSum(cart){
     let total = 0;
     let quantity = cart.length;
 
@@ -10,3 +10,5 @@ export default function cartSum(cart){
 
     return {total: total, quantity:quantity}
 }
+
+
