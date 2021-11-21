@@ -71,6 +71,7 @@ app.get('/menu', (req, res) => {
 });
 
 //POST method til addToCart -- ligger produkt i session_memory 
+//man kan altid diskutere for at dette burde være cookies istedet for session men så igen det har vi jo ikke lært noget om
 app.post('/postdata', urlencodedParser,(req, res) => {
   let data = req.body
   let cart = req.session.cart || [];

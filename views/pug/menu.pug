@@ -16,13 +16,15 @@ body
                             div(class="produkt")
                                 img(src="../IMG/1.jpg", alt="" class="produkt_img")
                                 p(class="produkt_title")= retnavn1
-                                p(class="produkt_pris")= val[retnavn1].Pris +" -.kr"
+                                p(class="produkt_pris")= val[retnavn][retnavn1].Pris +" -.kr"
+                                p= val[retnavn][retnavn1].Beskrivelse
                                 button(type="button" class="addBtn") add to cart
                     else if retnavn != "docID"
                         div(class="produkt")
                             img(src="../IMG/1.jpg", alt="" class="produkt_img")
                             p(class="produkt_title")= retnavn
                             p(class="produkt_pris")= val[retnavn].Pris +" -.kr"
+                            p= val[retnavn].Beskrivelse
                             button(type="button" class="addBtn") add to cart
 
 //val.docID
