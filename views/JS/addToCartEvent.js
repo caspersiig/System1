@@ -12,7 +12,7 @@ btn.forEach(button => {
         body: JSON.stringify(data)
       }).then(res => {
         console.log("Request complete! response:", res.status);
-        //window.location.href = "/menu"
+        window.location.href = "/menu"
       });
     });
 });

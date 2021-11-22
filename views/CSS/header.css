@@ -6,8 +6,8 @@
 
 :root {
     --color_brown: #241819;
-    --color_yellow: #FFE22C;
-    --color_yellow_hover: rgb(230, 205, 49);
+    --color_orange: #ffa600;
+    --color_hover_oragne: #dd9104;
     --color_white: #FFFFFF;
     
     --primary_font: 'Noto Sans', sans-serif;
@@ -24,13 +24,13 @@ body{
     position: fixed;
     width: 100%;
     height: 4.5em;    
-    background-color: var(--color_yellow);
+    background-color: var(--color_orange);
     display: flex;
     justify-content: center;
     border-bottom-left-radius:40px;
     border-bottom-right-radius:40px;
     z-index: 10;
-}
+}   
 
 .logo_img{
     max-width: 100%;
@@ -64,7 +64,7 @@ body{
 .button:hover, .cart_div:hover{
     opacity: 0.9;
     cursor: pointer;
-    background-color: var(--color_yellow_hover);
+    background-color: var(--color_hover_oragne);
 }
 
 

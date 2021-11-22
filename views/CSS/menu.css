@@ -4,58 +4,122 @@
 /* https://htmlcolorcodes.com/color-picker/
  */
 
-:root {
+
+ :root {
     --color_brown: #241819;
-    --color_yellow: #FFE22C;
-    --color_yellow_hover: rgb(230, 205, 49);
+    --color_orange: #ffa600;
+    --color_hover_oragne: #dd9104;
     --color_white: #FFFFFF;
+    --color_black: #000000;
+    --color_grey: #616161;
+    --color_lighter_grey: #b8b8b8;
+
     
     --primary_font: 'Noto Sans', sans-serif;
   }
 
 body{
-    margin: 0px;
+    font-family: var(--primary_font);
 }
 
-#bigProdukt{
-    display:table;
+#real-body{
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+    background-color: white;
+}
+
+.bigProdukt{
+    background-color: var(--color_white_lesser);
+    padding: 5px;
+    margin-bottom: 40px;
+}
+
+.Madtitel{
+    border-top: 1px solid var(--color_grey);
+    border-bottom: 1px solid var(--color_grey);
+    height: 45px;
     width: 100%;
 }
 
-#Madtitel{
-    display:table-caption;
-}
-
-#underMadTitler{
-    display:table-header-group;
+.underMadTitler{
+    padding-bottom: 25px;
+    font-size: 28px;
+    text-align: none;
+    border-bottom: 1px solid var(--color_lighter_grey);
 }
 
 .produkt{
+    text-align: center;
     position: relative;
-    width: 400px;
-    height: 70px;
-    border: solid 1px;
+    width: 250px;
+    height: 425px;
+    border: 10px solid white;
+    border-radius: 25px;
     padding: 8px;
     display: inline-flex;
     justify-content: space-around;
     display:table-cell;
+    background-color: var(--color_orange);
+    margin-right: 20%;
 }
 
 .produkt_img{
-    width: 70px;
-    height: 70px;
+    width: 160px;
+    height: 160px;
+    border-radius: 25%;
 }
 
 .produkt_title{
     font-family: var(--primary_font);
+    font-size: 22px;
+    margin-top: 2%;
+    margin-bottom: 0;
 }
 
 .produkt_pris{
     font-family: var(--primary_font);
+    font-size: 24px;
+    margin-top: 2%;
+    margin-bottom: 0;
+    position: absolute;
+    bottom: 90;
+    left: 10; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
 }
 
-.addBtn{
-    width: 100px;
-    height: 40px;
+.produkt_beskrivelse{
+    font-size: 12px;
+}  
 
+.addBtn{
+    position: absolute;
+    bottom: 10;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 75px;
+    height: 75px;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.addBtn:hover{
+    background: var(--color_hover_oragne);
+}
+
+.addtocart_img{
+    position:absolute;
+    right: 2%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    position: relative;
 }

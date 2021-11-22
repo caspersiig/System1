@@ -2,30 +2,35 @@ HTML
 head 
     link(rel="stylesheet", href="../CSS/menu.css")
     script(defer src="../JS/addToCartEvent.js")
+    script(defer src="../JS/swapNode.js") 
+
 body
     include header.pug 
-    div(style="padding-top: 8%;")
+    div(style="padding-top: 5%;" id="real-body")
         each val in items /* val = object/ map med alt informationen om alle retter(objecter) og et docid der siger hvilken titel de hører under */
             div(class="bigProdukt")
                 each retnavn in Object.keys(val)
                     if retnavn == "docID"
-                        h1(id="Madtitel")=val.docID
+                        h1(class="Madtitel")=val.docID
                     else if val[retnavn].Pris == undefined 
-                        h3(id="underMadTitler")= retnavn 
+                        h3(class="underMadTitler")= retnavn 
                         each retnavn1 in Object.keys(val[retnavn])
                             div(class="produkt")
                                 img(src="../IMG/1.jpg", alt="" class="produkt_img")
                                 p(class="produkt_title")= retnavn1
-                                p(class="produkt_pris")= val[retnavn][retnavn1].Pris +" -.kr"
-                                p= val[retnavn][retnavn1].Beskrivelse
-                                button(type="button" class="addBtn") add to cart
+                                p(class="produkt_pris")= val[retnavn][retnavn1].Pris +",-"
+                                p(class="produkt_beskrivelse")= val[retnavn][retnavn1].Beskrivelse
+                                button(type="button" class="addBtn")
+                                    img(src="../IMG/add_to_cart.png", alt="", srcset="" class="addtocart_img")
                     else if retnavn != "docID"
                         div(class="produkt")
                             img(src="../IMG/1.jpg", alt="" class="produkt_img")
                             p(class="produkt_title")= retnavn
-                            p(class="produkt_pris")= val[retnavn].Pris +" -.kr"
-                            p= val[retnavn].Beskrivelse
-                            button(type="button" class="addBtn") add to cart
+                            p(class="produkt_pris")= val[retnavn].Pris +",-"
+                            p(class="produkt_beskrivelse")= val[retnavn].Beskrivelse
+                            button(type="button" class="addBtn")
+                                img(src="../IMG/add_to_cart.png", alt="", srcset="" class="addtocart_img")
+
 
 //val.docID
 
