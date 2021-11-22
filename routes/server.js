@@ -13,6 +13,7 @@ import session from 'express-session';
 
 //framework krævet for at læse req.body (brugt i post method)
 import bodyParser from "body-parser";
+import { get } from "http";
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
@@ -58,16 +59,26 @@ app.get('/Cart', (req, res) => {
 });
 
 //PUG /menu
-app.get('/menu', (req, res) => {
+app.get('/menu', async (req, res) => {
 
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  getMessages().then(list => {
-    res.render('pug/menu.pug', {items:list, total: cart_summary.total, quantity: cart_summary.quantity }) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
-  //console.log(list)
-  });
-  
+  let session_menu = req.session.menu || [];
+
+  if(req.session.menu == undefined){
+    let fetch = await getMessages();
+    fetch.forEach(ele =>{
+      session_menu.push(ele)
+    })
+    
+    req.session.menu = session_menu;
+  };
+
+  //console.log(req.session.menu)
+
+  res.render('pug/menu.pug', {items:session_menu, total: cart_summary.total, quantity: cart_summary.quantity }) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
+
 });
 
 //POST method til addToCart -- ligger produkt i session_memory 

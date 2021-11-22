@@ -25,7 +25,6 @@ body{
 #real-body{
     margin: 0px;
     padding: 20px;
-    text-align: center;
     margin-right: 10%;
     margin-left: 10%;
     background-color: white;
@@ -35,9 +34,11 @@ body{
     background-color: var(--color_white_lesser);
     padding: 5px;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .Madtitel{
+    text-align: center;
     border-top: 1px solid var(--color_grey);
     border-bottom: 1px solid var(--color_grey);
     height: 45px;
@@ -47,7 +48,8 @@ body{
 .underMadTitler{
     padding-bottom: 25px;
     font-size: 28px;
-    text-align: none;
+    padding-bottom: 1;
+    text-align: left;
     border-bottom: 1px solid var(--color_lighter_grey);
 }
 
@@ -56,20 +58,19 @@ body{
     position: relative;
     width: 250px;
     height: 425px;
-    border: 10px solid white;
     border-radius: 25px;
-    padding: 8px;
-    display: inline-flex;
-    justify-content: space-around;
-    display:table-cell;
+    padding: 8px;    
+    display: inline-block;
     background-color: var(--color_orange);
-    margin-right: 20%;
+    margin-left: 20; 
+    overflow: hidden;
 }
 
 .produkt_img{
     width: 160px;
     height: 160px;
     border-radius: 25%;
+    object-fit: cover;
 }
 
 .produkt_title{

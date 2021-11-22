@@ -16,7 +16,7 @@ body
                         h3(class="underMadTitler")= retnavn 
                         each retnavn1 in Object.keys(val[retnavn])
                             div(class="produkt")
-                                img(src="../IMG/1.jpg", alt="" class="produkt_img")
+                                img(src=`../IMG/Retter/${retnavn1}`, alt="" class="produkt_img")
                                 p(class="produkt_title")= retnavn1
                                 p(class="produkt_pris")= val[retnavn][retnavn1].Pris +",-"
                                 p(class="produkt_beskrivelse")= val[retnavn][retnavn1].Beskrivelse
@@ -24,7 +24,7 @@ body
                                     img(src="../IMG/add_to_cart.png", alt="", srcset="" class="addtocart_img")
                     else if retnavn != "docID"
                         div(class="produkt")
-                            img(src="../IMG/1.jpg", alt="" class="produkt_img")
+                            img(src=`../IMG/Retter/${retnavn}.png`, alt="" class="produkt_img")
                             p(class="produkt_title")= retnavn
                             p(class="produkt_pris")= val[retnavn].Pris +",-"
                             p(class="produkt_beskrivelse")= val[retnavn].Beskrivelse

@@ -7,7 +7,6 @@ import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 
 // import { getAnalytics } from "firebase/analytics";
-
 import {getFirestore,collection,getDocs,doc,deleteDoc,addDoc} from 'firebase/firestore'
 // To apply the default browser preference instead of explicitly setting it.
 // firebase.auth().useDeviceLanguage();
@@ -46,6 +45,7 @@ const firebaseConfig = {
 const app2 = initializeApp(firebaseConfig);
 const db = getFirestore(app2);
 
+
 //const analytics = getAnalytics(app);
 
 export default async function getMessages(){
@@ -58,7 +58,10 @@ export default async function getMessages(){
        data.docID = doc.id
        return data
     })
+    
     return messageList
-}
+  }
+
+
 
 //hvad gør vi nu?!

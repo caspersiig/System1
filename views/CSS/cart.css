@@ -4,18 +4,19 @@
 /* https://htmlcolorcodes.com/color-picker/
  */
 
-:root {
-    --color_brown: #241819;
-    --color_yellow: #FFE22C;
-    --color_yellow_hover: #E6CD31;
-    --color_white: #FFFFFF;
-    --color_black: #000000;
-    --color_grey: #616161;
-    --color_lighter_grey: #b8b8b8;
 
-    
-    --primary_font: 'Noto Sans', sans-serif;
-  }
+ :root {
+  --color_brown: #241819;
+  --color_orange: #ffa600;
+  --color_hover_oragne: #dd9104;
+  --color_white: #FFFFFF;
+  --color_black: #000000;
+  --color_grey: #616161;
+  --color_lighter_grey: #b8b8b8;
+
+  
+  --primary_font: 'Noto Sans', sans-serif;
+}
 
 #dent{
   padding-bottom: 85px;

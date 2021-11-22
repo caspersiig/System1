@@ -1,7 +1,6 @@
 const bps = document.querySelectorAll('.bigProdukt')
 
 for (const bp of bps) {
-    console.log(bp.childNodes.length)
     swap(bp.childNodes[0], bp.childNodes[bp.childNodes.length-1])
 
     if(bp.childNodes.length % 2 == 1){
