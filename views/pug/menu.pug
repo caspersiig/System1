@@ -3,6 +3,7 @@ head
     link(rel="stylesheet", href="../CSS/menu.css")
     script(defer src="../JS/addToCartEvent.js")
     script(defer src="../JS/swapNode.js") 
+    script(defer src="../JS/setScrollY.js") 
 
 body
     include header.pug 
@@ -30,7 +31,6 @@ body
                             p(class="produkt_beskrivelse")= val[retnavn].Beskrivelse
                             button(type="button" class="addBtn")
                                 img(src="../IMG/add_to_cart.png", alt="", srcset="" class="addtocart_img")
-
 
 //val.docID
 

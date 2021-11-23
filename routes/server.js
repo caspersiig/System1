@@ -55,7 +55,7 @@ app.get('/Cart', (req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  res.render('pug/cart.pug', {  list: cart, total: cart_summary.total, quantity: cart_summary.quantity  })
+  res.render('pug/cart.pug', {  list: cart, total: cart_summary.total, quantity: cart_summary.quantity })
 });
 
 //PUG /menu
@@ -77,7 +77,7 @@ app.get('/menu', async (req, res) => {
 
   //console.log(req.session.menu)
 
-  res.render('pug/menu.pug', {items:session_menu, total: cart_summary.total, quantity: cart_summary.quantity }) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
+  res.render('pug/menu.pug', {items:session_menu, total: cart_summary.total, quantity: cart_summary.quantity}) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
 
 });
 
@@ -86,13 +86,11 @@ app.get('/menu', async (req, res) => {
 app.post('/postdata', urlencodedParser,(req, res) => {
   let data = req.body
   let cart = req.session.cart || [];
-
+    
   cart.push(data);
 
   req.session.cart = cart;
   
-  //console.log(req.session.cart)
-
   res.sendStatus(200)
 })
 
