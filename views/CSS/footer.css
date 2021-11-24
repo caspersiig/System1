@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+
+
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
+:root {
+    --color_brown: #241819;
+    --color_yellow: #ffec59;
+    --color_yellow_hover: rgb(230, 205, 49);
+    --color_white: #FFFFFF;
+    
+    --primary_font: 'Noto Sans', sans-serif;
+  }
+
+
+
+body{
+    margin: 0px;
+    font-family:var(--primary_font);
+    
+}
+
+
+.footer{
+    position: fixed;
+    display: flex;
+    bottom: 0%;
+    z-index: 10;
+    left: 0%;
+    width: 100%;
+    height: 150px;
+    background-color: var(--color_yellow);
+    color: var(--color_white);
+    text-align: center;
+}
+
+.footer h3{
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.footer ul{
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.company_info{
+    float:left;
+}
+
+.social_media{
+    position:absolute;
+    display:relative;
+    right: 10%;
+}
