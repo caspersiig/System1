@@ -12,6 +12,7 @@ body
                 each retnavn in Object.keys(val)
                     if retnavn == "docID"
                         h1(class="Madtitel")=val.docID
+                            a(id=`${val.docID}`)
                     else if val[retnavn].Pris == undefined 
                         h3(class="underMadTitler")= retnavn 
                         each retnavn1 in Object.keys(val[retnavn])

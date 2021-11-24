@@ -102,15 +102,18 @@ body{
 
 #cart_quantity{
     position: absolute;
-    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
     top: 2%;
     left: 55%;
     border: 1px solid red;
-    border-radius: 50%;
+    border-radius: 49%;
     background-color: red;
-    width: 18px;
-    text-align: center;
+    width: 20px;
+    height: 20px;
     margin: 0%;
+    letter-spacing: 0;
 }
 
 .cart_txt{

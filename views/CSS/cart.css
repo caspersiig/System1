@@ -71,16 +71,19 @@ tr{
 
 .product_img{
   max-height: 100%;
-  width: 125px;
+  width: 175px;
+  object-fit: contain;
+  border-radius: 25px;
 }
 
 .product_title{
   width: 100%;
   padding-left: 100%;
   position:absolute;
-    top: 30%;
-    bottom: 30%;
-    overflow: hidden;
+  top: 30%;
+  bottom: 30%;
+  overflow: hidden;
+  height: 100%;
 }
 
 .tc_price{

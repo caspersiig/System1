@@ -58,7 +58,7 @@ app.get('/Cart', (req, res) => {
 
   console.log(sorted_cart)
 
-  res.render('pug/cart.pug', {  list: cart, total: cart_summary.total, quantity: cart_summary.quantity })
+  res.render('pug/cart.pug', {  list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity })
 });
 
 //PUG /menu

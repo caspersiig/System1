@@ -3,7 +3,6 @@ head
     title My Cart
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
--var quan = 0;
     include header.pug
 body
     div(id="dent")
@@ -23,9 +22,9 @@ body
                     td(class="tc_price") 
                         p(class="product_price")=item.pris + " DKK"
                     td(class="tc_quantity")
-                        input(type="number" min="1" max="10" value=quan)
+                        input(type="number" min="1" max="10" value=item.quantity)
                     td(class="tc_total") 
-                        p(class="product_total")=item.pris * quan + " DKK"
+                        p(class="product_total")=item.pris * item.quantity + " DKK"
                     td(class="tc_cancel")
                         button(class="cancel_btn")
                             img(src="../IMG/cancel.png" class="cancel")
