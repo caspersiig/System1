@@ -2,6 +2,7 @@
 import express from "express";
 import pug from "pug";
 
+import { quantity } from "../controller/quantityControl.js";
 import getMessages from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
 
@@ -45,8 +46,6 @@ app.get('/', (req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  //console.log(cart_summary)
-
   res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
@@ -54,6 +53,10 @@ app.get('/', (req, res) => {
 app.get('/Cart', (req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
+
+  let sorted_cart = quantity(cart);
+
+  console.log(sorted_cart)
 
   res.render('pug/cart.pug', {  list: cart, total: cart_summary.total, quantity: cart_summary.quantity })
 });
