@@ -1,5 +1,39 @@
 doctype 
 html(lang="en")
     head 
-    body 
+        link(rel="stylesheet" href="../CSS/home.css")
+        script(defer src="../JS/menuCardMovement.js") 
         include header.pug 
+
+    body
+        div(id="real-body")
+            div(id="section_1")
+                div(id="img_bg")
+                p(id="titel") Ammis Butterchicken
+                p(id="under_titel") Direkte fra mors opskrift
+                
+            div(id="section_2")
+                div(id="cards")
+                    a(href="/menu") 
+                        div(class="container")
+                            div(class="card")
+                                img(src="../IMG/home_img1.jpg", alt="" class="card_img")
+                                p(class="card_img_txt") Dhal
+                    a(href="/menu") 
+                        div(class="container")
+                            div(class="card")
+                                img(src="../IMG/Retter/Beef Paratha.png", alt="" class="card_img")
+                                p(class="card_img_txt") Paratha
+                    a(href="/menu") 
+                        div(class="container")
+                            div(class="card")
+                                img(src="../IMG/Retter/Beef Samosa.png", alt="" class="card_img")
+                                p(class="card_img_txt") Samosa
+                    a(href="/menu") 
+                        div(class="container")
+                            div(class="card")
+                                img(src="../IMG/home_img4.jpg", alt="" class="card_img")
+                                p(class="card_img_txt") Butterchicken
+
+include footer.pug
+

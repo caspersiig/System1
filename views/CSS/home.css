@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
+
+ :root {
+    --color_brown: #241819;
+    --color_orange: #ffa600;
+    --color_hover_oragne: #dd9104;
+    --color_white: #FFFFFF;
+    --color_black: #000000;
+    --color_grey: #616161;
+    --color_lighter_grey: #b8b8b8;
+
+    
+    --primary_font: 'Fredoka One', cursive;
+  }
+
+
+#real-body{
+  margin: 0px;
+  height: 2000px;
+}
+
+#section_1{
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+#img_bg{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,166,0,1) 50%);
+    padding: 0;
+    top: 0;
+    position: absolute;
+    width: 200%;
+    height: 100%;
+}
+
+#bg1{
+    position: absolute;
+    top: 5%;
+    padding: 0;
+    display: block;
+    width: 50%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+#titel{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  font-size: 65px;
+  color: white;
+  z-index: 2;
+}
+
+#under_titel{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  font-size: 28px;
+  color: white;
+  z-index: 2;
+}
+
+#section_2{
+  position: absolute;
+  top: 50%;
+  height: 500px;
+  width: 100%;
+}
+
+#cards{
+  text-align: center;
+}
+
+.container{
+  position: relative;
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 360px;
+  height: 200px;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+.card{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom right,
+    var(--color_orange)0%,
+    var(--color_black)100%
+  );
+
+  --x-pos: 0;
+  --y-angle: calc(var(--x-pos) * 5deg);
+
+  --y-pos: 0;
+  --x-angle: calc(var(--y-pos) * 5deg);
+
+  transform: 
+    perspective(200px)
+    rotateY(var(--y-angle))
+    rotateX(var(--x-angle));
+}
+
+.card_img{
+  width: 100%;
+  border-radius: 20px;
+  opacity: 0.5;
+  height: 100%;
+}
+
+.card_img_txt{
+  position: absolute;
+  font-size: 38px;
+  color: var(--color_white);
+  right: 5%;
+  top: 50%;
+}

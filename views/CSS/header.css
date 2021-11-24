@@ -60,7 +60,6 @@ body{
     font-size: 20px;
     height: 100%;
     width: 125px;
-
     background-color: transparent;
 }
 
@@ -71,6 +70,8 @@ body{
 .button:hover, .cart_div:hover{
     opacity: 0.9;
     cursor: pointer;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     background-color: var(--color_hover_oragne);
 }
 
