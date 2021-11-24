@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  res.render('pug/header.pug', {total: cart_summary.total, quantity: cart_summary.quantity})
+  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
 //PUG /cart
