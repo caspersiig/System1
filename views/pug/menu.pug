@@ -3,7 +3,6 @@ head
     link(rel="stylesheet", href="../CSS/menu.css")
     script(defer src="../JS/addToCartEvent.js")
     script(defer src="../JS/swapNode.js") 
-    script(defer src="../JS/setScrollY.js") 
 
 body
     include header.pug 
@@ -32,5 +31,6 @@ body
                             button(type="button" class="addBtn" data=retnavn+","+val[retnavn].Pris)
                                 img(src="../IMG/add_to_cart.png", alt="", srcset="" class="addtocart_img")
 
+include footer.pug
 //val.docID
 

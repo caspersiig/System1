@@ -5,14 +5,10 @@ export function quantity(cart){
 
     let names = [];
 
-    console.log(names)
-
     for (const item of cart) {
 
         let here = names.includes(item.titel);
     
-        console.log(here)
-
         if(!here){
             names.push(item.titel);
             item.quantity = 1;

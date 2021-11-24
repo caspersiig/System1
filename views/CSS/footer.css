@@ -1,16 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 /* https://htmlcolorcodes.com/color-picker/
  */
 
-:root {
+
+ :root {
     --color_brown: #241819;
-    --color_yellow: #ffec59;
-    --color_yellow_hover: rgb(230, 205, 49);
+    --color_orange: #ffa600;
+    --color_hover_oragne: #dd9104;
     --color_white: #FFFFFF;
+    --color_black: #000000;
+    --color_grey: #616161;
+    --color_lighter_grey: #b8b8b8;
+
     
-    --primary_font: 'Noto Sans', sans-serif;
+    --primary_font: 'Fredoka One', cursive;
   }
 
 
@@ -18,33 +22,29 @@
 body{
     margin: 0px;
     font-family:var(--primary_font);
-    
 }
 
 
 .footer{
-    position: fixed;
-    display: flex;
-    bottom: 0%;
-    z-index: 10;
-    left: 0%;
     width: 100%;
-    height: 150px;
-    background-color: var(--color_yellow);
+    height: 140px;
+    background-color: var(--color_orange);
     color: var(--color_white);
-    text-align: center;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
+    display: inline-flex;
+    letter-spacing: 3px;
 }
 
 .footer h3{
-    margin-top: 0;
-    margin-bottom: 12px;
+    margin-top: 2;
+    margin-bottom: 0;
     font-weight: bold;
     font-size: 22px;
 }
 
 .footer ul{
     padding: 0;
-    list-style: none;
     line-height: 1.6;
     font-size: 14px;
     margin-bottom: 0;
@@ -52,12 +52,32 @@ body{
     font-weight: bold;
 }
 
+li{
+    margin-left: 35;
+}
+
 .company_info{
-    float:left;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2px;
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
 
 .social_media{
-    position:absolute;
-    display:relative;
-    right: 10%;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2px;
+}
+
+.media_img{
+    height: 60px;
+    width: 60px;
+    object-fit: fill;
 }
