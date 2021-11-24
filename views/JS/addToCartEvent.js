@@ -2,8 +2,8 @@ const btn = [...document.querySelectorAll('.addBtn')]
 
 btn.forEach(button => {
   button.addEventListener('click', async() => {
-    
-      let data = {imgsrc:"../IMG/1.jpg", titel:"my item", pris: 40};
+    let dataArray = button.getAttribute("data").split(',')
+      let data = {imgsrc:"../IMG/Retter/"+dataArray[0]+".png", titel:dataArray[0], pris: parseInt(dataArray[1])};
 
       await fetch("/postdata", {
         method: "POST",
