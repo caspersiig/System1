@@ -59,7 +59,11 @@ export default async function getMessages(){
        return data
     })
     
-    return messageList
+    const map1 = new Map();
+    messageList.map(test =>{
+      map1.set(test.docID,test);
+    })
+    return map1;
   }
 
 

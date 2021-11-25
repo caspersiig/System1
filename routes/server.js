@@ -72,6 +72,7 @@ app.get('/menu', async (req, res) => {
   if(req.session.menu == undefined){
     let fetch = await getMessages();
     fetch.forEach(ele =>{
+      console.log(ele)
       session_menu.push(ele)
     })
     
