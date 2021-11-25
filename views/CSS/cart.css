@@ -17,17 +17,20 @@
     --primary_font: 'Fredoka One', cursive;
   }
 
-
+body{
+    font-family: var(--primary_font);
+}
 
 #dent{
   padding-bottom: 85px;
 }
 
 #body{
-    font-family: var(--primary_font);
+    font-family: var(--primašy_font);
     width: 800px;
     margin: 0 auto;
     background-color: var(--color_white);
+    height: 100%;
 }
 
 #cartTitle{
@@ -123,7 +126,6 @@ tr{
   background: transparent;
   border: none;
   cursor: pointer;
-
 }
 
 .cancel{
@@ -131,6 +133,39 @@ tr{
   width: 30px;
   cursor: pointer;
 }
+
+#betaling {
+  display: inline-block;
+  position: relative;
+  left: 600px;
+}
+
+.knap {  
+  height: 75px;
+  width: 200px;
+  text-align: center;
+  background-color: var(--color_orange);
+  border: none;
+  padding: 5%;
+  text-decoration: none;
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+.knap:hover {
+  opacity: 50%;
+}
+
+#betal_text {
+  font-family: var(--primary_font);
+  font-size: 1.1rem;
+  word-spacing: 3px;
+}
+
+
+
+
+
 
 
 
