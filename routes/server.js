@@ -97,6 +97,17 @@ app.post('/postdata', urlencodedParser,(req, res) => {
   res.sendStatus(200)
 })
 
+//fejl håndtering
+app.use(function(req, res, next) {
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('pug/404', { url: req.url });
+    return;
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
