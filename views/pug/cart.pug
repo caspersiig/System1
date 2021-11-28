@@ -3,8 +3,19 @@ head
     title My Cart
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
+    script(defer src="../JS/payCartEvent.js")
     include header.pug
 body
+    div(id="modal")
+                div(id="modal_content") 
+                    table(id ="betalingsliste") 
+                        th(id="th_betal") Pay with: 
+                            tr  
+                                // måske mobilepay logo vil være nice 
+                                <span class="close">&times;</span>
+                                td(id="mobilepay") 
+                                    a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
+                                        img(src="/IMG/mobilepayLogo3.png" class="mobilepay")
     div(id="dent")
     div(id="body")
         h1(id="cartTitle") Shopping cart
@@ -31,8 +42,8 @@ body
         div(id="betaling")
             button(class="knap")
                 div(id="betal_text")
-                    p(class="betal_txt")="Betal: " + total + " DKK"                
-include footer.pug 
+                    p(class="betal_txt")="Price: " + total + " DKK"           
+    include footer.pug 
 
 
             
