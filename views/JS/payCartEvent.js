@@ -17,6 +17,7 @@ betalKnap.forEach(btn => {
 span.forEach(btn => {
     btn.addEventListener("click", () => {
         modal[0].style.display="none"; 
+        body[0].style.opacity="1"; 
         classBody[0].style.opacity="1"
     });
 }) 
