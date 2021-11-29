@@ -131,7 +131,11 @@ tr{
 .cancel{
   height: 100%;
   width: 30px;
-  cursor: pointer;
+}
+
+.cancel:hover{
+  opacity: 50%;
+  cursor: pointer
 }
 
 #betaling {
@@ -179,7 +183,7 @@ tr{
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  width: 10%;
+  width: 16em;
   border: 1px solid #888;
   text-align: right;
   align-items: center;

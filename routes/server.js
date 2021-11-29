@@ -15,8 +15,8 @@ import session from 'express-session';
 //framework krævet for at læse req.body (brugt i post method)
 import bodyParser from "body-parser";
 import { get } from "http";
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const app = express()
 const port = 3000
@@ -56,7 +56,7 @@ app.get('/Cart', (req, res) => {
 
   let sorted_cart = quantity(cart);
 
-  console.log(sorted_cart)
+  //console.log(sorted_cart)
 
   res.render('pug/cart.pug', {  list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity })
 });
@@ -89,9 +89,25 @@ app.get('/menu', async (req, res) => {
 //man kan altid diskutere for at dette burde være cookies istedet for session men så igen det har vi jo ikke lært noget om
 app.post('/postdata', urlencodedParser,(req, res) => {
   let data = req.body
+
+  //console.log("Body: " + data)
+
   let cart = req.session.cart || [];
-    
+  //console.log("Cart " + cart)  
+
   cart.push(data);
+
+  req.session.cart = cart;
+  
+  res.sendStatus(200)
+});
+
+app.delete('/deleteData', urlencodedParser,(req, res) => {
+  let data = req.body
+  let cart = req.session.cart || []; 
+
+  // sletter/splicer det element der bliver fundet i det givne array og givende indeks
+  cart.splice(cart.findIndex(element => element.titel == data.index), 1);
 
   req.session.cart = cart;
   
