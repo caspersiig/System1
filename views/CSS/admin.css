@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* https://htmlcolorcodes.com/color-picker/
+ */
+
+
+ :root {
+    --color_brown: #241819;
+    --color_orange: #ffa600;
+    --color_hover_oragne: #dd9104;
+    --color_white: #efefef;
+    --color_black: #000000;
+    --color_grey: #616161;
+    --color_lighter_grey: #b8b8b8;
+
+    
+    --primary_font: 'Fredoka One', cursive;
+  }
+
+
+#real-body{
+  margin: 0px;
+  height: 2000px;
+}
+
