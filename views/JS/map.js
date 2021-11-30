@@ -8,8 +8,12 @@
    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
  }).addTo(map);
 
+ kortdata = JSON.parse(document.getElementById("kortdata").value);
+
  // show the scale bar on the lower left corner
  L.control.scale({imperial: true, metric: true}).addTo(map);
 
  // show a marker on the map
- L.marker([56.1631694, 10.2196941]).bindPopup('Ammis Butterchicken').addTo(map);
+for (let i = 0; i < kortdata.length; i++) {
+  L.marker([kortdata[i].Placering.latitude, kortdata[i].Placering.longitude]).bindPopup(kortdata[i].aabningstider).addTo(map);
+}
