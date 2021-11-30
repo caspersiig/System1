@@ -1,4 +1,3 @@
-
 export function quantity(cart){
 
     let quantity_cart = [];

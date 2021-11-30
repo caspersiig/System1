@@ -48,9 +48,27 @@ const db = getFirestore(app2);
 
 //const analytics = getAnalytics(app);
 
-export default async function getMessages(){
+export async function getMessages(){
   
     const messageCol = collection(db,'Menu')
+    const messageSnapshot = await getDocs(messageCol)
+    
+    const messageList = messageSnapshot.docs.map(doc =>{
+       let data = doc.data()
+       data.docID = doc.id
+       return data
+    })
+    
+    const map1 = new Map();
+    messageList.map(test =>{
+      map1.set(test.docID,test);
+    })
+    return map1;
+  }
+
+  export async function getMadvogne(){
+  
+    const messageCol = collection(db,'Madvogne')
     const messageSnapshot = await getDocs(messageCol)
     
     const messageList = messageSnapshot.docs.map(doc =>{

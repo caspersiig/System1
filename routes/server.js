@@ -3,7 +3,7 @@ import express from "express";
 import pug from "pug";
 
 import { quantity } from "../controller/quantityControl.js";
-import getMessages from "../controller/firestore.js"
+import {getMessages,getMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
 
 
@@ -42,11 +42,22 @@ app.use(express.static('views'));
 
 
 //PUG /home
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
   let cart = req.session.cart || [];
   let cart_summary = cartSum(cart);
 
-  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity})
+  let session_madvogne = req.session.madvogne || [];
+
+  if(req.session.menu == undefined){
+    let fetch = await getMadvogne();
+    fetch.forEach(ele =>{
+      session_madvogne.push(ele)
+    })
+  }
+    req.session.madvogne = session_madvogne;
+    console.log(req.session.madvogne)
+
+  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity,kort:req.session.menu})
 });
 
 //PUG /cart
@@ -58,7 +69,7 @@ app.get('/Cart', (req, res) => {
 
   //console.log(sorted_cart)
 
-  res.render('pug/cart.pug', {  list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity })
+  res.render('pug/cart.pug', {list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
 //PUG /menu
