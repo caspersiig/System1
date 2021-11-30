@@ -6,6 +6,8 @@ html(lang="en")
         link(rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="")
         script(defer src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="")
         script(defer src="../JS/map.js") 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
         include header.pug 
 
@@ -40,26 +42,28 @@ html(lang="en")
                                 p(class="card_img_txt") Butterchicken
             div(id="section_3")
                 img(src="../IMG/nicepic.jpg" id="velkommen_img")
-                div(id="txt_div")
-                    p(id="vogn_txt_head") Velkommen til Aarhus' bedste Butterchicken
-                div(id="txt_div2")
-                    p(id="vogn_txt") Ammis Butterchicken er en lille, lokal og traditionel indisk madvogn, der tilbyder retter inden for det sydasiatiske køkken. Specialiteterne er tilberedt med inspiration fra mors opskrifter, der gennem generationer er gået i arv.
-                    p
-                    p(id = "vogn_txt2") Vores udvalg strækker sig fra klassiske kyllingeretter som Butterchicken til vegetar-retter som Veggie Paratha.
-                    p
-                    p(id = "vogn_txt3") Vælg dine retter på menu-siden, tilføj dem til indkøbskurven, betal med MobilePay og afhent efter 30 minutter!
-            
+                div(id="txt1")
+                    div(id="txt_div")
+                        p(id="vogn_txt_head") Velkommen til Aarhus' bedste Butterchicken
+                    div(id="txt_div2")
+                        p(class="vogn_txt") Ammis Butterchicken er en lille, lokal og traditionel indisk madvogn, der tilbyder retter inden for det sydasiatiske køkken. Specialiteterne er tilberedt med inspiration fra mors opskrifter, der gennem generationer er gået i arv.
+                        p
+                        p(class = "vogn_txt") Vores udvalg strækker sig fra klassiske kyllingeretter som Butterchicken til vegetar-retter som Veggie Paratha.
+                        p
+                        p(class = "vogn_txt") Vælg dine retter på menu-siden, tilføj dem til indkøbskurven, betal med MobilePay og afhent efter 30 minutter!
+                
             div(id="section_4")
-                div(id="txt_div3")
-                    p(id="map_txt_head") Holdepladser og åbningstider
-                div(id="txt_div4")
-                    p(id="map_txt") Vores åbningstider er: 
-                    p
-                    p(id = "map_tider") Onsdag-Mandag : Åbent fra 15.00 til 21.00
-                    p
-                    p(id = "map_txt2") Vi holder i øjeblikket på følgende adresse: 
-                    p
-                    p(id = "map_holdeplads") Hveensgade 1, 8000 Aarhus C
+                div(id="txt2")
+                    div(id="txt_div3")
+                        p(id="map_txt_head") Holdepladser og åbningstider
+                    div(id="txt_div4")
+                        p(id="map_txt") Vores åbningstider er: 
+                        p
+                        p(id = "map_tider") Onsdag-Mandag : Åbent fra 15.00 til 21.00
+                        p
+                        p(id = "map_txt2") Vi holder i øjeblikket på følgende adresse: 
+                        p
+                        p(id = "map_holdeplads") Hveensgade 1, 8000 Aarhus C
                 div(id="map")
 
                 

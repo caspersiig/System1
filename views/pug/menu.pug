@@ -3,10 +3,11 @@ head
     link(rel="stylesheet", href="../CSS/menu.css")
     script(defer src="../JS/addToCartEvent.js")
     script(defer src="../JS/swapNode.js") 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 body
     include header.pug 
-    div(style="padding-top: 5%;" id="real-body")
+    div(id="real-body")
         each val in items /* val = object/ map med alt informationen om alle retter(objecter) og et docid der siger hvilken titel de hører under */
             div(class="bigProdukt")
                 each retnavn in Object.keys(val)
