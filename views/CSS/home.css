@@ -159,6 +159,7 @@
 
 #txt_div2{
   position: absolute;
+  margin: 30px;
   top: 12%;
   left: 50%;
   width: 48%;
@@ -180,6 +181,17 @@
   margin: 0;
 }
 
+#vogn_txt2{
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
+
+#vogn_txt3{
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
 
 #section_4{
   position: absolute;
@@ -200,6 +212,7 @@
 
 #txt_div4{
   position: absolute;
+  margin: 30px;
   top: 12%;
   width: 48%;
   padding-left: 2%;
@@ -217,6 +230,24 @@
 }
 
 #map_txt{
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
+
+#map_tider{
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
+
+#map_txt2{
+  color: black;
+  font-size: 20px;
+  margin: 0;
+}
+
+#map_holdeplads{
   color: black;
   font-size: 20px;
   margin: 0;
