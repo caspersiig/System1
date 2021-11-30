@@ -26,15 +26,21 @@ import { quantity } from "../controller/quantityControl.js";
 // })
 
 describe("adding two or more items to return the correct price", () => {
-    let cart = [{imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 39}]
-    const result = cartSum(cart);
-
-    assert.equal(result.total, 157);
-})
 it ("Should return the total sum of the cart", () => {
     let cart = [{imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 39}]
     const result = cartSum(cart);
 
     assert.equal(result.total, 157);
+    })
 })
+
+describe("checks the amont of items in the cart", () => {
+it ("Should return the quantity of the cart", () => {
+    let cart = [{imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 59}, {imgsrc: "image.png", titel: "titel", pris: 39}]
+    const result = cartSum(cart);
+
+    assert.equal(result.quantity, 3);   
+    })
+})
+
 
