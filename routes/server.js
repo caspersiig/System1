@@ -125,6 +125,11 @@ app.delete('/deleteData', urlencodedParser,(req, res) => {
   res.sendStatus(200)
 })
 
+app.get('/admin', (req, res) => {
+
+  res.render('pug/admin.pug')
+});
+
 //fejl håndtering
 app.use(function(req, res, next) {
   res.status(404);
