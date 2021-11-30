@@ -125,8 +125,24 @@ app.delete('/deleteData', urlencodedParser,(req, res) => {
 })
 
 app.get('/admin', (req, res) => {
+  if(req.session.accessToken == null){
+    res.render('pug/admin.pug')
+  }else{
+    res.render('pug/adminHemlig.pug',{navn:req.session.navn})
+  }
+});
 
-  res.render('pug/admin.pug')
+app.post('/admindata', urlencodedParser,(req, res) => {
+  let data = req.body
+  if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified){
+    //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
+    req.session.navn = data.displayName
+    req.session.accessToken = data.stsTokenManager.accessToken
+    res.sendStatus(200)
+  }else{
+    res.sendStatus(404)
+  }
+
 });
 
 //fejl håndtering
