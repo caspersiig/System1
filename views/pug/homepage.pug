@@ -8,10 +8,12 @@ html(lang="en")
         script(defer src="../JS/map.js") 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        script(defer src="../JS/setInfo.js")
 
         include header.pug 
 
     body
+        input(type="hidden" id ="kortdata" value= kort)
         div(id="real-body")
             div(id="section_1")
                 div(id="img_bg")
