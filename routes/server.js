@@ -48,16 +48,15 @@ app.get('/', async(req, res) => {
 
   let session_madvogne = req.session.madvogne || [];
 
-  if(req.session.menu == undefined){
+  if(req.session.madvogne == undefined){
     let fetch = await getMadvogne();
     fetch.forEach(ele =>{
       session_madvogne.push(ele)
     })
   }
     req.session.madvogne = session_madvogne;
-    console.log(req.session.madvogne)
 
-  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity,kort:req.session.menu})
+  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity,kort:JSON.stringify(req.session.madvogne)})
 });
 
 //PUG /cart
