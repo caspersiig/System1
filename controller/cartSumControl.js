@@ -6,9 +6,8 @@ export function cartSum(cart){
 
     for (const item of cart) {
         total += item.pris;
-    }
-
-    return {total: total, quantity:quantity}
+    } 
+    return {total: total, quantity: quantity}
 }
 
 
