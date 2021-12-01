@@ -3,7 +3,7 @@ const btn = [...document.querySelectorAll('.cancel_btn')]
 btn.forEach(button => {
     button.addEventListener('click', async() => {
       let value = button.getAttribute("data");
-      let data = { index:  value }
+      let data = { titel:  value }
       await fetch("/deleteData", {
         method: "DELETE",
         headers: {'Content-Type': 'application/json'},
