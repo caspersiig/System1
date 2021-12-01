@@ -15,8 +15,7 @@ import session from 'express-session';
 //framework krævet for at læse req.body (brugt i post method)
 import bodyParser from "body-parser";
 import { get } from "http";
-
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+import { connectFirestoreEmulator } from "@firebase/firestore";
 
 const app = express()
 const port = 3000
@@ -65,6 +64,8 @@ app.get('/Cart', (req, res) => {
   let cart_summary = cartSum(cart);
 
   let sorted_cart = quantity(cart);
+    
+  req.session.cart = cart;
 
   //console.log(sorted_cart)
 
@@ -82,7 +83,6 @@ app.get('/menu', async (req, res) => {
   if(req.session.menu == undefined){
     let fetch = await getMessages();
     fetch.forEach(ele =>{
-      console.log(ele)
       session_menu.push(ele)
     })
     
@@ -97,7 +97,7 @@ app.get('/menu', async (req, res) => {
 
 //POST method til addToCart -- ligger produkt i session_memory 
 //man kan altid diskutere for at dette burde være cookies istedet for session men så igen det har vi jo ikke lært noget om
-app.post('/postdata', urlencodedParser,(req, res) => {
+app.post('/postdata',(req, res) => {
   let data = req.body
 
   //console.log("Body: " + data)
@@ -106,13 +106,11 @@ app.post('/postdata', urlencodedParser,(req, res) => {
   //console.log("Cart " + cart)  
 
   cart.push(data);
-
   req.session.cart = cart;
-  
   res.sendStatus(200)
 });
 
-app.delete('/deleteData', urlencodedParser,(req, res) => {
+app.delete('/deleteData',(req, res) => {
   let data = req.body
   let cart = req.session.cart || []; 
 
@@ -124,6 +122,25 @@ app.delete('/deleteData', urlencodedParser,(req, res) => {
   res.sendStatus(200)
 })
 
+
+app.post('/updateItemQuantity', (req, res) => {
+  let data = req.body
+  let cart = req.session.cart || []; 
+
+  let index = cart.findIndex(item => item.titel == data.object.titel);
+
+  if(data.do === "delete"){
+    cart.splice(index, 1)
+  }else{
+    cart.push(data.object)
+  }
+
+  req.session.cart = cart;
+  
+  res.sendStatus(200)
+})
+
+
 app.get('/admin', (req, res) => {
   if(req.session.accessToken == null){
     res.render('pug/admin.pug')
@@ -132,7 +149,7 @@ app.get('/admin', (req, res) => {
   }
 });
 
-app.post('/admindata', urlencodedParser,(req, res) => {
+app.post('/admindata', (req, res) => {
   let data = req.body
   if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
@@ -142,7 +159,6 @@ app.post('/admindata', urlencodedParser,(req, res) => {
   }else{
     res.sendStatus(404)
   }
-
 });
 
 //fejl håndtering

@@ -4,6 +4,8 @@ head
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
     script(defer src="../JS/payCartEvent.js")
+    script(defer src="../JS/quantityBtnEvent.js")
+
     include header.pug
 body
     div(id="modal")
@@ -33,7 +35,7 @@ body
                     td(class="tc_price") 
                         p(class="product_price")=item.pris + " DKK"
                     td(class="tc_quantity")
-                        input(type="number" min="1" max="10" value=item.quantity)
+                        input(type="number" min="1" max="10" value=item.quantity class="in_quantity" onkeydown="return false")
                     td(class="tc_total") 
                         p(class="product_total")=item.pris * item.quantity + " DKK"
                     td(class="tc_cancel")
