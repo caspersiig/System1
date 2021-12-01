@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha",
+    "coverage": "nyc npm run test",
     "start": "nodemon routes/server.js"
   },
   "repository": {
