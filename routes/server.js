@@ -161,7 +161,7 @@ app.post('/admindata', (req, res) => {
   }
 });
 
-app.post('/addMadvogn', urlencodedParser,(req, res) => {
+app.post('/addMadvogn' ,(req, res) => {
   let data = req.body
   if(req.session.accessToken != null ){ //HUSK AT IMPLEMINTERE TID!!!!
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
