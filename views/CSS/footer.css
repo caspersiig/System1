@@ -12,8 +12,8 @@
     --color_black: #000000;
     --color_grey: #616161;
     --color_lighter_grey: #b8b8b8;
-
     
+
     --primary_font: 'Fredoka One', cursive;
   }
 
@@ -70,8 +70,8 @@ a{
 
 .social_media{
     display: block;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 60%;
+    
     padding: 2px;
 }
 
@@ -85,7 +85,7 @@ a{
 
     .footer{
        height: 26%;
-       padding-bottom: 2%;
+       padding-bottom: 2%; 
     }
 
     .media_img{
