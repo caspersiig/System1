@@ -145,6 +145,18 @@ app.post('/admindata', urlencodedParser,(req, res) => {
 
 });
 
+app.post('/addMadvogn', urlencodedParser,(req, res) => {
+  let data = req.body
+  if(req.session.accessToken != null ){ //HUSK AT IMPLEMINTERE TID!!!!
+    //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
+    console.log(data)
+    res.sendStatus(200)
+  }else{
+    res.sendStatus(404)
+  }
+
+});
+
 //fejl håndtering
 app.use(function(req, res, next) {
   res.status(404);

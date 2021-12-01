@@ -15,5 +15,5 @@
 
  // show a marker on the map
 for (let i = 0; i < kortdata.length; i++) {
-  L.marker([kortdata[i].Placering.latitude, kortdata[i].Placering.longitude]).bindPopup(kortdata[i].aabningstider).addTo(map);
+  L.marker([kortdata[i].Placering.latitude, kortdata[i].Placering.longitude]).bindPopup(kortdata[i].Adresse).addTo(map);
 }
