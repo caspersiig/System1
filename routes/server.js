@@ -125,7 +125,7 @@ app.delete('/deleteData',(req, res) => {
 
 app.post('/updateItemQuantity', (req, res) => {
   let data = req.body
-  let cart = req.session.cart || []; 
+  let cart = req.session.cart || [];
 
   let index = cart.findIndex(item => item.titel == data.object.titel);
 
@@ -172,6 +172,14 @@ app.post('/addMadvogn' ,(req, res) => {
   }
 
 });
+
+app.get('/contact', (req, res) => {
+    let cart = req.session.cart || [];
+    let cart_summary = cartSum(cart);
+
+    res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
+});
+
 
 //fejl håndtering
 app.use(function(req, res, next) {

@@ -1,0 +1,22 @@
+HTML 
+
+    head 
+        link(rel="stylesheet", href="../CSS/kontakt.css")
+        include header.pug
+    body 
+        h1(id="header") Kontakt
+        div(id="content")
+            div(id="contact-form")
+                form(action='/send-contact-form', method='POST' id="form")
+                    |          Email
+                    input(type="email" name='email' value='' id="email" class="form_ele")
+                    |          Navn 
+                    input(type='text', name='navn', value='' id="name" class="form_ele")
+                    |          Emne 
+                    input(type='text', name='emne', value='' id="subject" class="form_ele")
+                    |          Tekst 
+                    input(type='textarea', name='tekst', value='' id="text" class="form_ele")
+                    br
+                    input(type='submit', value='Submit' id="submit" class="form_ele")
+
+include footer.pug
