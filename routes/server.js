@@ -113,8 +113,13 @@ app.delete('/deleteData',(req, res) => {
   let cart = req.session.cart || []; 
 
   // sletter/splicer det element der bliver fundet i det givne array og givende indeks
-  cart.splice(cart.findIndex(element => element.titel == data.titel), 1);
-
+  // hvis antal af varer af samme varer er større end en, vil alle de samme varer slettes
+  let itemFound = cart.find(element => element.titel == data.titel)
+  if (data.titel == itemFound.titel && data.quan > 1) {
+    cart.splice(cart.findIndex(element => element.titel == data.titel), data.quan);
+  } else {
+    cart.splice(cart.findIndex(element => element.titel == data.titel), 1);
+  }
   req.session.cart = cart;
   
   res.sendStatus(200)
