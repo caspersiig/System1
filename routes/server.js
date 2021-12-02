@@ -3,9 +3,8 @@ import express from "express";
 import pug from "pug";
 
 import { quantity } from "../controller/quantityControl.js";
-import {getMessages,getMadvogne} from "../controller/firestore.js"
+import {getMessages,getMadvogne,addMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
-
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -32,7 +31,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('views'));
-
 
 //HTML
 /* app.get('/', (req, res) => {
@@ -154,6 +152,7 @@ app.post('/admindata', (req, res) => {
   if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
     req.session.navn = data.displayName
+    req.session.uid = data.uid
     req.session.accessToken = data.stsTokenManager.accessToken
     res.sendStatus(200)
   }else{
@@ -161,16 +160,20 @@ app.post('/admindata', (req, res) => {
   }
 });
 
-app.post('/addMadvogn' ,(req, res) => {
+app.post('/addMadvogn' ,async (req, res) => {
   let data = req.body
   if(req.session.accessToken != null ){ //HUSK AT IMPLEMINTERE TID!!!!
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
+    //check data
+    req.auth = req.session.uid
     console.log(data)
+    addMadvogne(data);
     res.sendStatus(200)
   }else{
     res.sendStatus(404)
   }
 
+  
 });
 
 app.get('/contact', (req, res) => {

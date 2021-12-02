@@ -7,7 +7,7 @@ import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 
 // import { getAnalytics } from "firebase/analytics";
-import {getFirestore,collection,getDocs,doc,deleteDoc,addDoc} from 'firebase/firestore'
+import {getFirestore,collection,getDocs,doc,deleteDoc,addDoc,setDoc} from 'firebase/firestore'
 // To apply the default browser preference instead of explicitly setting it.
 // firebase.auth().useDeviceLanguage();
 
@@ -84,6 +84,29 @@ export async function getMessages(){
     return map1;
   }
 
+  export async function addMadvogne(data){
+    // Build Firebase credential with the Google ID token.
+const credential = GoogleAuthProvider.credential(id_token);
+
+// Sign in with credential from the Google user.
+const auth = getAuth();
+signInWithCredential(auth, credential).catch((error) => {
+  // Handle Errors here.
+  const errorCode = error.code;
+  const errorMessage = error.message;
+  // The email of the user's account used.
+  const email = error.email;
+  // The AuthCredential type that was used.
+  const credential = GoogleAuthProvider.credentialFromError(error);
+  // ...
+});
+    let array = data.Placering.split(',')
+    await setDoc(doc(db,'Madvogne',data.madvogn),{
+      Adresse:data.Adresse,
+      Beskrivelse:data.Beskrivelse,
+      Placering:[array[0],array[1]]
+    })
+  }
 
 
 //hvad gør vi nu?!
