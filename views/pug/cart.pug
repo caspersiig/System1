@@ -10,11 +10,18 @@ head
 body
     div(id="modal")
                 div(id="modal_content") 
-                    table(id ="betalingsliste") 
+                    table(id="betalingsliste") 
                         th(id="th_betal") Pay with: 
                             tr  
-                                // måske mobilepay logo vil være nice 
                                 <span class="close">&times;</span>
+                                td(id="kontant") 
+                                    a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
+                                        img(src="/IMG/kontanterLogo.png" class="kontant")
+                            tr  
+                                td(id="stripe") 
+                                    a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
+                                        img(src="/IMG/stripeLogoBlue.png" class="stripe")
+                            tr  
                                 td(id="mobilepay") 
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
                                         img(src="/IMG/mobilepayLogo3.png" class="mobilepay")
