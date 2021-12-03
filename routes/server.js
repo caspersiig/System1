@@ -235,8 +235,7 @@ app.post('/send-contact-form', async (reg, res) => {
        res.send('error');
       }
       else{ 
-          console.log('Email succesfully sent')
-          res.send('succes');
+          res.send('Email succesfully sent');
           res.redirect('/')
       }
   })
@@ -252,35 +251,33 @@ app.post('/create-checkout-session', async (req, res) =>{
 
   let sorted_cart = quantity(cart);
 
-  //console.log(sorted_cart)
-
-  /*  try {
+   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: sorted_cart.map((item) => {
-        console.log()
+        let imgsrc = 'https://i.imgur.com/oyU7CPf.jpg'
         return {
           price_data: {
             currency: 'dkk',
             product_data: {
               name: item.titel,
-              images: [item.imgsrc]
+              images: [imgsrc]
             },
             unit_amount: item.pris * 100,
           },
           quantity: item.quantity
         }
       }),
-      success_url: '/',
-      cancel_url: '/12353452321324'
+      success_url: 'http://localhost:3000/',
+      cancel_url: 'http://localhost:3000/Contact'
     })
-    res.json({ url: session.url})
+    res.json({ url: session.url })
   } catch (e) {
     console.log({ error: e.message })
     res.status(500)
     return;
-  } */
+  }
 })
 
 //---------------------------------------------------------------------------------------------------------------------------
