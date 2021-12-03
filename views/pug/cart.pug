@@ -46,7 +46,7 @@ body
                     td(class="tc_total") 
                         p(class="product_total")=item.pris * item.quantity + " DKK"
                     td(class="tc_cancel")
-                        button(class="cancel_btn" data=item.titel)
+                        button(class="cancel_btn" titel=item.titel quan=item.quantity)
                             img(src="../IMG/cancel.png" class="cancel")
         div(id="betaling")
             button(class="knap")
