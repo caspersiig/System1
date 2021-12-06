@@ -1,5 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js'
 import { getAuth, signInWithPopup, GoogleAuthProvider  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js'
+import { setDoc, doc,getFirestore,GeoPoint,updateDoc} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -12,15 +13,14 @@ const firebaseConfig = {
     measurementId: "G-MRVXJE05HK"
 };
 
-
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
+const db = getFirestore(app);
+
 document.getElementById("login").addEventListener("click", ()=>{
-    const auth = getAuth();
-    console.log(auth)
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -47,10 +47,88 @@ async function send (user){
     await fetch("/admindata", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(auth)
+        body: JSON.stringify(user)
       }).then(res => {
-          console.log(res)
         console.log("Request complete! response:", res.status);
         location.reload();
       });
 }
+
+document.getElementById("addmadvogne").addEventListener("click", async (event)=>{
+  event.preventDefault();
+  const form = document.getElementById('madvogn');
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData);
+  const map1 = new Map();
+  for (const [key, value] of params.entries()) {
+    map1.set(key,value)
+    console.log(key)
+  }
+
+  let splice = map1.get('Placering').split(',')
+  await setDoc(doc(db,'Madvogne',map1.get('madvogn')),{
+    Adresse:map1.get('Adresse'),
+    Beskrivelse:map1.get('Beskrivelse'),
+    Placering:new GeoPoint ( splice[0] ,splice[1] )
+  })
+})
+
+document.getElementById("addret").addEventListener("click", async (event)=>{
+  event.preventDefault();
+  const form = document.getElementById('retmad');
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData);
+  const map1 = new Map();
+  for (const [key, value] of params.entries()) {
+    map1.set(key,value)
+    console.log(key)
+  }
+  map1.get()
+if(map1.get('undermenu') == ""){
+  let tempret = map1.get('retnavn')
+  let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
+  let object2 = {}
+  object2[tempret] = object
+  
+  await setDoc(doc(db,'Menu',map1.get('overmenu')),
+  object2
+  )
+}else{
+  let tempret = map1.get('retnavn')
+  let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
+  let object2 = {}
+  object2[tempret] = object
+  let object3 = {}
+  object3[map1.get('undermenu')] = object2
+  
+  await setDoc(doc(db,'Menu',map1.get('overmenu')),
+  object3
+  )
+}
+})
+
+
+
+document.getElementById("upretmad").addEventListener("click", async (event)=>{
+  event.preventDefault();
+  const form = document.getElementById('formretmad');
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData);
+  const map1 = new Map();
+  for (const [key, value] of params.entries()) {
+    map1.set(key,value)
+    console.log(key)
+  }
+
+  const docen = doc(db, "Menu", map1.get('overmenu'));
+  if(map1.get('undermenu') == ""){
+
+  await updateDoc(docen, {
+    capital: true
+  });
+  
+}else{
+
+}
+
+})

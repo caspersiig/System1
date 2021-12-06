@@ -154,8 +154,6 @@ app.post('/updateItemQuantity', (req, res) => {
   res.sendStatus(200)
 })
 
-
-
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ ADMIN SIDE / FIREBASE CRUD -----------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
@@ -193,8 +191,6 @@ app.post('/addMadvogn' ,async (req, res) => {
   }else{
     res.sendStatus(404)
   }
-
-  
 });
 
 
@@ -245,6 +241,17 @@ app.post('/send-contact-form', async (reg, res) => {
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ STRIPE -------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
+
+app.get("/stripe-order-succesful&verified", (req, res) => {
+  let navn = "Thomas Taulo";
+  let tidspunkt = "14:55";
+  res.render("pug/succes_url.pug", {navn:navn, tidspunkt: tidspunkt});
+})
+
+app.get("/stripe-order-negated", (req, res) => {
+  res.render("pug/cancel_url.pug");
+})
+
 app.post('/create-checkout-session', async (req, res) =>{
   let cart = req.session.cart || [];
 
@@ -267,8 +274,8 @@ app.post('/create-checkout-session', async (req, res) =>{
           quantity: item.quantity
         }
       }),
-      success_url: 'http://localhost:3000/',
-      cancel_url: 'http://localhost:3000/Contact'
+      success_url: 'http://localhost:3000/stripe-order-succesful&verified',
+      cancel_url: 'http://localhost:3000/stripe-order-negated'
     })
     res.json({ url: session.url })
   } catch (e) {

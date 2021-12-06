@@ -1,0 +1,25 @@
+:root{
+    --primary_font: 'Fredoka One', cursive;
+}
+
+body{
+    font-family: var(--primary_font);
+}
+
+#succes_text{
+    padding-top: 130px;    
+    padding-left: 100px;
+    font-size: larger;
+    line-height: 2;
+}
+
+.a{
+    text-decoration:underline;
+    color:hotpink;
+}
+
+.a:hover {
+    opacity: 50%;
+    color:hotpink;
+
+}
