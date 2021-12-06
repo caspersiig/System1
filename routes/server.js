@@ -154,18 +154,6 @@ app.post('/updateItemQuantity', (req, res) => {
   res.sendStatus(200)
 })
 
-app.get("/stripe-order-succesful&verified", (req, res) => {
-  let navn = "Thomas Taulo";
-  let tidspunkt = "14:55";
-  res.render("pug/succes_url.pug", {navn:navn, tidspunkt: tidspunkt});
-})
-
-app.get("/stripe-order-negated", (req, res) => {
-  res.render("pug/cancel_url.pug");
-})
-
-
-
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ ADMIN SIDE / FIREBASE CRUD -----------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
@@ -204,6 +192,7 @@ app.post('/addMadvogn' ,async (req, res) => {
     res.sendStatus(404)
   }
 });
+
 
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ NODEMAILER ---------------------------------------------------------------
@@ -252,6 +241,17 @@ app.post('/send-contact-form', async (reg, res) => {
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ STRIPE -------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
+
+app.get("/stripe-order-succesful&verified", (req, res) => {
+  let navn = "Thomas Taulo";
+  let tidspunkt = "14:55";
+  res.render("pug/succes_url.pug", {navn:navn, tidspunkt: tidspunkt});
+})
+
+app.get("/stripe-order-negated", (req, res) => {
+  res.render("pug/cancel_url.pug");
+})
+
 app.post('/create-checkout-session', async (req, res) =>{
 
   let cart = req.session.cart || [];
