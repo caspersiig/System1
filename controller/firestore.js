@@ -5,6 +5,7 @@
 import { async } from "@firebase/util";
 
 import { initializeApp } from "firebase/app";
+import { getAuth} from "firebase/auth";
 
 
 
@@ -85,5 +86,21 @@ export async function getMessages(){
     })
     return map1;
   }
+
+  export async function addMadvogne(data){
+    
+    //auth2 = uid
+    // Build Firebase credential with the Google ID token.
+    
+    
+    console.log(data)
+    let array = data.Placering.split(',')
+    await setDoc(doc(db,'Madvogne',data.madvogn),{
+      Adresse:data.Adresse,
+      Beskrivelse:data.Beskrivelse,
+      Placering:[array[0],array[1]]
+    })
+  }
+
 
 //hvad gør vi nu?!
