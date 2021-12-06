@@ -1,0 +1,14 @@
+HTML 
+head 
+    title Gennemført  
+    link(rel="stylesheet", href="../CSS/succes.css")
+
+    include header.pug
+body 
+    div(id="succes_text")
+        div
+            p1="Tak for din bestilling " + navn + "!" + " Din ordre er nu gennemført og vil blive behandlet."
+            br 
+            p1="Din bestilling vil ca. være klar kl " + tidspunkt + "."
+
+include footer.pug 
