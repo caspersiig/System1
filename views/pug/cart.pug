@@ -12,30 +12,33 @@ body
     div(id="modal")
                 div(id="modal_content") 
                     table(id="betalingsliste") 
-                        th(id="th_betal") Pay with: 
-                            tr  
+                        th(id="th_betal") Pay with 
+                            tr(class="modal_tr")  
                                 <span class="close">&times;</span>
+                            tr(class="modal_tr")    
+                                td(id="stripe") 
+                                        img(src="/IMG/stripeLogoBlue.png" id="stripe")
+                                    
+                            tr(class="modal_tr")
                                 td(id="kontant") 
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
                                         img(src="/IMG/kontanterLogo.png" id="kontant")
-                            tr  
-                                td(id="stripe") 
-                                        img(src="/IMG/stripeLogoBlue.png" id="stripe")
-                            tr  
+                            tr(class="modal_tr")    
                                 td(id="mobilepay") 
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
                                         img(src="/IMG/mobilepayLogo3.png" id="mobilepay")
     div(id="dent")
+    h1(id="cartTitle") Shopping cart
+
     div(id="body")
-        h1(id="cartTitle") Shopping cart
         table(id="table")
-            tr
+            tr(class="cart_tr")
                 th(id="th_product") Product 
                 th(id="th_price") Unit Price 
                 th(id="th_quantity") Quantity 
                 th(id="th_total") Total Price
             each item in list
-                tr
+                tr(class="cart_tr")
                     td(class="tc_product")
                         img(src=`${item.imgsrc}` class="product_img")
                         p(class="product_title")= item.titel 
@@ -48,6 +51,13 @@ body
                     td(class="tc_cancel")
                         button(class="cancel_btn" titel=item.titel quan=item.quantity)
                             img(src="../IMG/cancel.png" class="cancel")
+    div(id="kunde_info")
+        p Navn:
+        input(type="text" value="Navn" class="input_kunde" id="kunde_navn")
+        p Email:
+        input(type="email" value="test@test.test" class="input_kunde" id="kunde_email")
+        p Afhentings-tidspunkt (15:00 - 20:30)
+        input(type="time" min="15:30" max="20:15" class="input_kunde" id="time")
         div(id="betaling")
             button(class="knap")
                 div(id="betal_text")

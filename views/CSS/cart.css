@@ -19,6 +19,8 @@
 
 body{
     font-family: var(--primary_font);
+    display: flexbox;
+    justify-content: space-between;
 }
 
 #dent{
@@ -26,17 +28,21 @@ body{
 }
 
 #body{
-    font-family: var(--primašy_font);
-    width: 800px;
-    margin: 0 auto;
-    background-color: var(--color_white);
-    height: 100%;
-    padding-bottom: 200px;
-
+  position: relative;
+  display: block;
+  font-family: var(--primašy_font);
+  width: 800px;
+  float: left;
+  background-color: var(--color_white);
+  height: 100%;
+  padding-bottom: 200px;
+  margin-left: 15%;
+  margin-right: 5%;
 }
 
 #cartTitle{
   text-align: center;
+  margin-bottom: 50px;
 }
 
 #table{
@@ -62,7 +68,7 @@ body{
 
 }
 
-tr{
+.cart_tr{
   border-top: 1px solid var(--color_lighter_grey);
   border-bottom: 1px solid var(--color_lighter_grey);
 }
@@ -141,11 +147,41 @@ tr{
   cursor: pointer
 }
 
+#kunde_info{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid;
+  border-radius: 25px;
+  padding: 25px;
+  width: 400px;
+}
+
+.input_kunde{
+  display: flex;
+  margin: 0px 0px 20px 0px;
+  border-radius: 10px;
+  border: 1px solid;
+  padding-left: 5px;
+}
+
+#kunde_navn{
+ width: 200px;
+ height: 30px;
+}
+
+#kunde_email{
+  width: 300px;
+  height: 30px;
+}
+
+#time{
+  width: 90px;
+  height: 30px;
+}
+
 #betaling {
   display: inline-block;
   position: relative;
-  padding-top: 10px;
-  left: 600px;
 }
 
 .knap {  
@@ -157,7 +193,6 @@ tr{
   padding: 5%;
   text-decoration: none;
   border-radius: 10px;
-  border-collapse: collapse;
 }
 
 .knap:hover {
@@ -169,6 +204,13 @@ tr{
   font-family: var(--primary_font);
   font-size: 1.1rem;
   word-spacing: 3px;
+  padding-bottom: 10px;
+}
+
+#th_betal{
+  padding-bottom: 20px;
+  font-size: 28px;
+  text-align: center;
 }
 
 #modal {
@@ -188,8 +230,6 @@ tr{
   padding: 20px;
   width: 16em;
   border: 1px solid #888;
-  text-align: right;
-  align-items: center;
 }
 
 .close {
@@ -205,25 +245,32 @@ tr{
   cursor: pointer;
 }
 
-tbody{
-  vertical-align: middle;
-  margin: auto;
+
+#betalingsliste{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 }
 
-.kontant {
-  width: 165px;
-  height: 70px;
+.modal_tr{
+  text-align: center;
+}
+
+#kontant {
+  width: 160px;
+  height: auto;
+  padding: 0;
 }
 
 
-.kontant:hover {
+#kontant:hover {
   opacity: 50%;
   cursor: pointer
 }
 
 #stripe {
-  width: 150;
-  height: 70px;
+  width: 100px;
+  height: auto;
 }
 
 #stripe:hover {
@@ -231,12 +278,12 @@ tbody{
   cursor: pointer;
 }
 
-.mobilepay {
-  width: 150px;
-  height: 55px;
+#mobilepay {
+  width: 140px;
+  height: auto;
 }
 
-.mobilepay:hover {
+#mobilepay:hover {
   opacity: 50%;
   cursor: pointer
 }

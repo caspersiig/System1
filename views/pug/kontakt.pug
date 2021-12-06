@@ -9,13 +9,13 @@ HTML
             div(id="contact-form")
                 form(action='/send-contact-form', method='POST' id="form")
                     |          Email
-                    input(type="email" name='email' value='' id="email" class="form_ele")
+                    input(type="email" name='email' value='' id="email" class="form_ele" required)
                     |          Navn 
-                    input(type='text', name='navn', value='' id="name" class="form_ele")
+                    input(type='text', name='navn', value='' id="name" class="form_ele" required)
                     |          Emne 
-                    input(type='text', name='emne', value='' id="subject" class="form_ele")
+                    input(type='text', name='emne', value='' id="subject" class="form_ele" required)
                     |          Tekst 
-                    textarea(name='tekst', value='' id="text" class="form_ele")
+                    textarea(name='tekst', value='' id="text" class="form_ele" required)
                     br
                     input(type='submit', value='Submit' id="submit" class="form_ele")
 

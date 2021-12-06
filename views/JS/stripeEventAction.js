@@ -1,8 +1,6 @@
 
 const stripe_btn = document.querySelector("#stripe");
 
-console.log("hello")
-
 stripe_btn.addEventListener('click', async() => {
 
     await fetch("/create-checkout-session", {

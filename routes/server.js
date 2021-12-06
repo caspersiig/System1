@@ -246,7 +246,6 @@ app.post('/send-contact-form', async (reg, res) => {
 //------------------------------------------------ STRIPE -------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
 app.post('/create-checkout-session', async (req, res) =>{
-
   let cart = req.session.cart || [];
 
   let sorted_cart = quantity(cart);
@@ -256,13 +255,12 @@ app.post('/create-checkout-session', async (req, res) =>{
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: sorted_cart.map((item) => {
-        let imgsrc = 'https://i.imgur.com/oyU7CPf.jpg'
         return {
           price_data: {
             currency: 'dkk',
             product_data: {
               name: item.titel,
-              images: [imgsrc]
+              images: []
             },
             unit_amount: item.pris * 100,
           },
