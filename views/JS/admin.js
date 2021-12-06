@@ -20,6 +20,7 @@ const auth = getAuth();
 
 document.getElementById("login").addEventListener("click", ()=>{
     const auth = getAuth();
+    console.log(auth)
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -42,13 +43,11 @@ document.getElementById("login").addEventListener("click", ()=>{
       });
 });
 
-
 async function send (user){
-    console.log("sender login")
     await fetch("/admindata", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
+        body: JSON.stringify(auth)
       }).then(res => {
           console.log(res)
         console.log("Request complete! response:", res.status);
