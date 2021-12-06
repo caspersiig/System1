@@ -1,11 +1,13 @@
 html(lang="en")
     head 
         link(rel="stylesheet" href="../CSS/admin.css")
+        script(defer type="module" src="../JS/admin.js") 
     body
+        h2(id="login")= ""
         div(id="real-body")
             h1= "Velkommen til admin siden: "+navn
             h2= "Tilføj en madvogn"
-            form(action='/addMadvogn', method='POST')
+            form(id="madvogn")
                 p
                     |   Madvogne navn (bare så du kan kende madvogen): 
                     input(type='text', name='madvogn', value='')
@@ -15,35 +17,35 @@ html(lang="en")
                     input(type='text', name='Placering', value='')
                     |   Beskrivelse(noget med åbningstider):
                     input(type='text', name='Beskrivelse', value='')
-                input(type='submit', value='Tilføj')
+                 input(id = "addmadvogne",type='submit', value='Tilføj')
             h2 Tilføj en ret
-            form(action='/addRet', method='POST')
+            form(id="retmad")
                 p
                     |   Overmenu fx forretter: 
-                    input(type='text', name='title', value='')
-                    |   OverUnderMenu(FX kød eller vegetar): 
-                    input(type='text', name='year', value='')
+                    input(type='text', name='overmenu', value='')
+                    |   OverUnderMenu(FX kød eller vegetar)*kan godt være ingenting: 
+                    input(type='text', name='undermenu', value='')
                     |   Retnavn (fx Butterchicken): 
-                    input(type='text', name='imdb', value='')
+                    input(type='text', name='retnavn', value='')
                     |   Beskrivelse 
-                    input(type='text', name='imdb', value='')
+                    input(type='text', name='beskrivelse', value='')
                     |   Pris
-                    input(type='text', name='imdb', value='')
-                input(type='submit', value='Tilføj')
+                    input(type='text', name='pris', value='')
+                input(id="addret",type='submit', value='Tilføj')
             h2 Opdater ret
-            form(action='/updateRet', method='POST')
+            form(id="formretmad")
                 p
                     |   Overmenu fx forretter: 
-                    input(type='text', name='title', value='')
+                    input(type='text', name='overmenu', value='')
                     |   OverUnderMenu(FX kød eller vegetar): 
-                    input(type='text', name='year', value='')
+                    input(type='text', name='undermenu', value='')
                     |   Retnavn (fx Butterchicken): 
-                    input(type='text', name='imdb', value='')
+                    input(type='text', name='retnavn', value='')
                     |   Beskrivelse 
-                    input(type='text', name='imdb', value='')
+                    input(type='text', name='beskrivelse', value='')
                     |   Pris
-                    input(type='text', name='imdb', value='')
-                input(type='submit', value='Opdater')
+                    input(type='text', name='pris', value='')
+                input(id="upretmad",type='submit', value='Opdater')
                 
             h2 Opdater Madvogn
             form(action='/updateRet', method='POST')

@@ -11,7 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_KEY_TEST);
 import nodemailer from 'nodemailer';
 
 import { quantity } from "../controller/quantityControl.js";
-import {getMessages,getMadvogne,addMadvogne} from "../controller/firestore.js"
+import {getMessages,getMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
 
 import { dirname } from 'path';
@@ -178,21 +178,6 @@ app.post('/admindata', (req, res) => {
     res.sendStatus(404)
   }
 });
-
-app.post('/addMadvogn' ,async (req, res) => {
-  let data = req.body
-  if(req.session.accessToken != null ){ //HUSK AT IMPLEMINTERE TID!!!!
-    //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
-    //check data
-    req.auth = req.session.uid
-    console.log(data)
-    addMadvogne(data);
-    res.sendStatus(200)
-  }else{
-    res.sendStatus(404)
-  }
-});
-
 
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ NODEMAILER ---------------------------------------------------------------
