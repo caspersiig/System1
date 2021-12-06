@@ -1,6 +1,14 @@
+import dotenv from 'dotenv'
+dotenv.config()
 
 import express from "express";
 import pug from "pug";
+
+import Stripe from "stripe"
+const stripe = new Stripe(process.env.STRIPE_KEY_TEST);
+
+
+import nodemailer from 'nodemailer';
 
 import { quantity } from "../controller/quantityControl.js";
 import {getMessages,getMadvogne,addMadvogne} from "../controller/firestore.js"
@@ -32,11 +40,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('views'));
 
-//HTML
-/* app.get('/', (req, res) => {
-    res.sendFile((__dirname) + "/views/HTML/index.html")
-}); */
-
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ STANDARD ROUTES -----------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 
 //PUG /home
 app.get('/', async(req, res) => {
@@ -83,7 +89,7 @@ app.get('/menu', async (req, res) => {
     fetch.forEach(ele =>{
       session_menu.push(ele)
     })
-    
+
     req.session.menu = session_menu;
   };
 
@@ -93,6 +99,11 @@ app.get('/menu', async (req, res) => {
 
 });
 
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ CRUD ITEM-CART -----------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 //POST method til addToCart -- ligger produkt i session_memory 
 //man kan altid diskutere for at dette burde være cookies istedet for session men så igen det har vi jo ikke lært noget om
 app.post('/postdata',(req, res) => {
@@ -144,6 +155,11 @@ app.post('/updateItemQuantity', (req, res) => {
 })
 
 
+
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ ADMIN SIDE / FIREBASE CRUD -----------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
+
 app.get('/admin', (req, res) => {
   if(req.session.accessToken == null){
     res.render('pug/admin.pug')
@@ -181,6 +197,11 @@ app.post('/addMadvogn' ,async (req, res) => {
   
 });
 
+
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ NODEMAILER ---------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
+
 app.get('/contact', (req, res) => {
     let cart = req.session.cart || [];
     let cart_summary = cartSum(cart);
@@ -188,6 +209,80 @@ app.get('/contact', (req, res) => {
     res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
+app.post('/send-contact-form', async (reg, res) => {
+  console.log(reg.body);
+
+  const transporter = nodemailer.createTransport({
+   host: "smtp.gmail.com", //replace with your email provider
+   port: 587,
+   secureConnection: false,
+      auth:{
+          user: process.env.GMAIL_MAIL,
+          pass: process.env.GMAIL_PASSWORD
+      }
+  })
+
+  const mailOptions = {
+      from: reg.body.email,
+      to: process.env.GMAIL_RECEIVER_TEST,
+      subject: `From: ${reg.body.email} || Subject: ${reg.body.emne}`,
+      text: reg.body.tekst +"\nName: "+ reg.body.navn +"\n"+ `From: ${reg.body.email}`
+  }
+
+  transporter.sendMail(mailOptions, (err, info) => {
+      if(err){
+       console.log(err);
+       res.send('error');
+      }
+      else{ 
+          res.send('Email succesfully sent');
+          res.redirect('/')
+      }
+  })
+});
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ STRIPE -------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
+app.post('/create-checkout-session', async (req, res) =>{
+
+  let cart = req.session.cart || [];
+
+  let sorted_cart = quantity(cart);
+
+   try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      mode: 'payment',
+      line_items: sorted_cart.map((item) => {
+        let imgsrc = 'https://i.imgur.com/oyU7CPf.jpg'
+        return {
+          price_data: {
+            currency: 'dkk',
+            product_data: {
+              name: item.titel,
+              images: [imgsrc]
+            },
+            unit_amount: item.pris * 100,
+          },
+          quantity: item.quantity
+        }
+      }),
+      success_url: 'http://localhost:3000/',
+      cancel_url: 'http://localhost:3000/Contact'
+    })
+    res.json({ url: session.url })
+  } catch (e) {
+    console.log({ error: e.message })
+    res.status(500)
+    return;
+  }
+})
+
+//---------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ 404 Fejlhåndtering -------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 
 //fejl håndtering
 app.use(function(req, res, next) {

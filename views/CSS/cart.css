@@ -31,6 +31,8 @@ body{
     margin: 0 auto;
     background-color: var(--color_white);
     height: 100%;
+    padding-bottom: 200px;
+
 }
 
 #cartTitle{
@@ -73,6 +75,7 @@ tr{
 }
 
 .product_img{
+  position: relative;
   max-height: 100%;
   width: 175px;
   object-fit: contain;
@@ -203,7 +206,6 @@ tr{
 }
 
 tbody{
-  text-align: center;
   vertical-align: middle;
   margin: auto;
 }
@@ -219,12 +221,12 @@ tbody{
   cursor: pointer
 }
 
-.stripe {
+#stripe {
   width: 150;
   height: 70px;
 }
 
-.stripe:hover {
+#stripe:hover {
   opacity: 50%;
   cursor: pointer;
 }

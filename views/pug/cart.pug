@@ -5,6 +5,7 @@ head
     script(defer src="../JS/cancelCartEvent.js") 
     script(defer src="../JS/payCartEvent.js")
     script(defer src="../JS/quantityBtnEvent.js")
+    script(defer src="../JS/stripeEventAction.js") 
 
     include header.pug
 body
@@ -16,15 +17,14 @@ body
                                 <span class="close">&times;</span>
                                 td(id="kontant") 
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
-                                        img(src="/IMG/kontanterLogo.png" class="kontant")
+                                        img(src="/IMG/kontanterLogo.png" id="kontant")
                             tr  
                                 td(id="stripe") 
-                                    a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
-                                        img(src="/IMG/stripeLogoBlue.png" class="stripe")
+                                        img(src="/IMG/stripeLogoBlue.png" id="stripe")
                             tr  
                                 td(id="mobilepay") 
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
-                                        img(src="/IMG/mobilepayLogo3.png" class="mobilepay")
+                                        img(src="/IMG/mobilepayLogo3.png" id="mobilepay")
     div(id="dent")
     div(id="body")
         h1(id="cartTitle") Shopping cart
