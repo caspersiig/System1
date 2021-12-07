@@ -19,8 +19,6 @@ in_quantity.forEach(input => {
 
     let after_quan = parseInt(input.value);
 
-    console.log(after_quan)
-
 
     let data = undefined;
 

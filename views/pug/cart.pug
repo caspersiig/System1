@@ -1,11 +1,14 @@
 HTML 
 head 
-    title Indkøbskurv
+    title My Cart
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
     script(defer src="../JS/payCartEvent.js")
     script(defer src="../JS/quantityBtnEvent.js")
     script(defer src="../JS/stripeEventAction.js") 
+    <script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+
 
     include header.pug
 body
@@ -28,15 +31,15 @@ body
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
                                         img(src="/IMG/mobilepayLogo3.png" id="mobilepay")
     div(id="dent")
-    h1(id="cartTitle") Indkøbskurv
+    h1(id="cartTitle") Shopping cart
 
     div(id="body")
         table(id="table")
             tr(class="cart_tr")
-                th(id="th_product") Produkt  
-                th(id="th_price") Pr. stk.  
-                th(id="th_quantity") Antal 
-                th(id="th_total") Pris I alt 
+                th(id="th_product") Product 
+                th(id="th_price") Unit Price 
+                th(id="th_quantity") Quantity 
+                th(id="th_total") Total Price
             each item in list
                 tr(class="cart_tr")
                     td(class="tc_product")
@@ -55,17 +58,14 @@ body
         p Navn:
         input(type="text" value="Navn" class="input_kunde" id="kunde_navn")
         p Telefnr:
-        input(type="tel" value="12345678" class="input_kunde" id="kunde_telf")
+        input(type="tel" value="12345678" class="input_kunde" id="kunde_tlf")
         p Email:
         input(type="email" value="test@test.test" class="input_kunde" id="kunde_email")
         p Afhentings-tidspunkt (15:00 - 20:30)
-        input(type="time" min="15:30" max="20:15" class="input_kunde" id="time")
+        input(type="text" class="input_kunde" id="time" placeholder="Time")
         div(id="betaling")
             button(class="knap")
                 div(id="betal_text")
-                    p(class="betal_txt")="Pris: " + total + " DKK"           
+                    p(class="betal_txt")="Price: " + total + " DKK"           
     include footer.pug 
-
-
-            
 

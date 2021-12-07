@@ -18,6 +18,7 @@ date_open.setHours(15);
 date_open.setMinutes(00);
 
 
+
 timestamp.addEventListener('change', () =>{
 
     let user_time = timestamp.value;
@@ -33,7 +34,25 @@ timestamp.addEventListener('change', () =>{
         if(date_open < date && date < date_closing){
             
             betalKnap.disabled = false;
-            console.log("IF")
+
+                betalKnap.addEventListener('click', async() => {
+                    user_time = timestamp.value;
+                    let client_name = document.querySelector('#kunde_navn').value;
+                    let client_email = document.querySelector('#kunde_email').value;
+                    let client_tlf = document.querySelector('#kunde_tlf').value;
+
+
+
+                    let data = { client_name: client_name, client_email: client_email, client_tlf : client_tlf, client_time: user_time};
+                    
+                    await fetch("/postCartClientInfo", {
+                        method: "POST",
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data)
+                    }).then(res => {
+                        console.log("Request complete - Res:", res.status);
+                    });
+                    });
 
                 betalKnap.addEventListener("click", () => {
                     modal[0].style.display = "block";
@@ -56,6 +75,11 @@ timestamp.addEventListener('change', () =>{
                 }
             })
         }else{
+            classBody[0].style.opacity="1";
+            body[0].style.opacity="1";
+            modal[0].style.display="none";
             betalKnap.disabled = true;
+            betalKnap.style.opacity = "1"
+            betalKnap.style.cursor = "not-Allowed"
         }
 })

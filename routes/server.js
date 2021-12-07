@@ -13,6 +13,9 @@ import nodemailer from 'nodemailer';
 import { quantity } from "../controller/quantityControl.js";
 import {getMessages,getMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
+import { cartToString } from '../controller/cartToString.js';
+import { mailToOwner, mailToClient, mailContact } from '../controller/nodemailer.js';
+
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -98,6 +101,17 @@ app.get('/menu', async (req, res) => {
   res.render('pug/menu.pug', {items:session_menu, total: cart_summary.total, quantity: cart_summary.quantity}) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
 
 });
+
+
+app.post('/postCartClientInfo', async(req, res) => {
+  let data = req.body;
+
+  req.session.client_info = data;
+
+  res.sendStatus(200)
+});
+
+
 
 
 
@@ -186,53 +200,41 @@ app.post('/admindata', (req, res) => {
 //---------------------------------------------------------------------------------------------------------------------------
 
 app.get('/contact', (req, res) => {
-    let cart = req.session.cart || [];
-    let cart_summary = cartSum(cart);
+  let cart = req.session.cart || [];
 
-    res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
+  let cart_summary = cartSum(cart);
+
+  res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
 });
 
-app.post('/send-contact-form', async (reg, res) => {
-  console.log(reg.body);
+app.post('/send-contact-form', async (req, res) => {
 
-  const transporter = nodemailer.createTransport({
-   host: "smtp.gmail.com", //replace with your email provider
-   port: 587,
-   secureConnection: false,
-      auth:{
-          user: process.env.GMAIL_MAIL,
-          pass: process.env.GMAIL_PASSWORD
-      }
-  })
+  mailContact(req,res);
 
-  const mailOptions = {
-      from: reg.body.email,
-      to: process.env.GMAIL_RECEIVER_TEST,
-      subject: `From: ${reg.body.email} || Subject: ${reg.body.emne}`,
-      text: reg.body.tekst +"\nName: "+ reg.body.navn +"\n"+ `From: ${reg.body.email}`
-  }
-
-  transporter.sendMail(mailOptions, (err, info) => {
-      if(err){
-       console.log(err);
-       res.send('error');
-      }
-      else{ 
-          res.send('Email succesfully sent');
-          res.redirect('/')
-      }
-  })
 });
-
 
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ STRIPE -------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
 
 app.get("/stripe-order-succesful&verified", (req, res) => {
-  let navn = "Thomas Taulo";
-  let tidspunkt = "14:55";
-  res.render("pug/succes_url.pug", {navn:navn, tidspunkt: tidspunkt});
+
+  let client_name = req.session.client_info.client_name;
+  let client_email = req.session.client_info.client_email;
+  let client_tlf = req.session.client_info.client_tlf;
+  let client_time = req.session.client_info.client_time;
+
+  let cart = req.session.cart || [];
+
+  let sorted_cart = quantity(cart);
+
+  let toString = cartToString(sorted_cart);
+
+
+  mailToClient(res, toString, client_name, client_email, client_time);
+  mailToOwner(res,toString, client_name, client_tlf, client_time);
+
+  res.render("pug/succes_url.pug", {name:client_name, tlf: client_tlf, email:client_email, time:client_time});
 })
 
 app.get("/stripe-order-negated", (req, res) => {
@@ -271,6 +273,7 @@ app.post('/create-checkout-session', async (req, res) =>{
     return;
   }
 })
+
 
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ 404 Fejlhåndtering -------------------------------------------------------
