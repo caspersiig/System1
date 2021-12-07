@@ -115,7 +115,6 @@ body{
   display: inline-block;
 }
 
-
 .tc_total{
   color: var(--color_grey);
   text-align: right;
@@ -224,12 +223,14 @@ body{
 }
 
 #modal_content {
-  position: relative;
+  position: fixed;
+  left: 40%;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   width: 16em;
-  border: 1px solid #888;
+  border: 1px solid;
+  border-radius: 25px;
 }
 
 .close {
