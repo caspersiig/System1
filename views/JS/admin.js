@@ -109,8 +109,6 @@ if(map1.get('undermenu') == ""){
 }
 })
 
-
-
 document.getElementById("upretmad").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('formretmad');
@@ -124,13 +122,44 @@ document.getElementById("upretmad").addEventListener("click", async (event)=>{
 
   const docen = doc(db, "Menu", map1.get('overmenu'));
   if(map1.get('undermenu') == ""){
+    let tempret = map1.get('retnavn')
+    let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
+    let object2 = {}
+    object2[tempret] = object
 
-  await updateDoc(docen, {
-    capital: true
-  });
+  await updateDoc(docen, 
+    object2
+  );
 
 }else{
+  let tempret = map1.get('retnavn')
+  let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
+  let object2 = {}
+  object2[tempret] = object
+  let object3 = {}
+  object3[map1.get('undermenu')] = object2
 
+  await updateDoc(docen, 
+    object3
+  );
 }
+})
+//yikes
+document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
+  event.preventDefault();
+  const form = document.getElementById('formmadvogn');
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData);
+  const map1 = new Map();
+  for (const [key, value] of params.entries()) {
+    map1.set(key,value)
+    console.log(key)
+  }
 
+  let splice = map1.get('Placering').split(',')
+  await updateDoc(doc(db,'Madvogne',map1.get('madvogn')),{
+    Adresse:map1.get('Adresse'),
+    Beskrivelse:map1.get('Beskrivelse'),
+    Placering:new GeoPoint ( splice[0] ,splice[1] )
+  })
 })
