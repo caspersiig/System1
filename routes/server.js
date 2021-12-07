@@ -158,16 +158,18 @@ app.post('/updateItemQuantity', (req, res) => {
 //------------------------------------------------ ADMIN SIDE / FIREBASE CRUD -----------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
 
-app.get('/admin', (req, res) => {
+app.get('/admin',async (req, res) => {
   if(req.session.accessToken == null){
     res.render('pug/admin.pug')
   }else{
-    res.render('pug/adminHemlig.pug',{navn:req.session.navn})
+    let fetch = await getMadvogne();
+    res.render('pug/adminHemlig.pug',{navn:req.session.navn,madvogn:fetch})
   }
 });
 
 app.post('/admindata', (req, res) => {
   let data = req.body
+  console.log(data.uid)
   if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
     req.session.navn = data.displayName

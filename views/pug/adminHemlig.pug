@@ -47,7 +47,11 @@ html(lang="en")
                     |   Pris
                     input(type='text', name='pris', value='')
                 input(id="upretmad",type='submit', value='Opdater')
-                
+            each val in madvogn
+                p= val.docID
+                p= val.Beskrivelse
+                p= val.Adresse
+                p= val.Placering 
             h2 Opdater Madvogn
             form(id="formmadvogn")
                 p
