@@ -170,7 +170,7 @@ app.get('/admin',async (req, res) => {
 app.post('/admindata', (req, res) => {
   let data = req.body
   console.log(data.uid)
-  if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified){
+  if(data.email == "caspersiig@gmail.com" && data.uid == "l3vlcvzi67eY67DKCJuRq2oIfeZ2" && data.emailVerified || data.email == "ammisbutterchicken@gmail.com" && data.uid == "cQSNB8ZTWDc8Kk3mN9kaxdo0z9C3" && data.emailVerified){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
     req.session.navn = data.displayName
     req.session.uid = data.uid
