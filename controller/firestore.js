@@ -15,13 +15,13 @@ import {getFirestore,collection,getDocs,doc,deleteDoc,addDoc,setDoc} from 'fireb
 // firebase.auth().useDeviceLanguage();
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC0jL0t0cmeNGU8EyxSgnNja1poxKfTrqU",
-    authDomain: "ammis-butterchicken.firebaseapp.com",
-    projectId: "ammis-butterchicken",
-    storageBucket: "ammis-butterchicken.appspot.com",
-    messagingSenderId: "653707361851",
-    appId: "1:653707361851:web:3a360724b075830c4de61e",
-    measurementId: "G-MRVXJE05HK"
+  apiKey: "AIzaSyDrkuV2MsSfgb4orDT3ZqsZuBYN4orI6EY",
+  authDomain: "ammisbutterchicken-c1b39.firebaseapp.com",
+  projectId: "ammisbutterchicken-c1b39",
+  storageBucket: "ammisbutterchicken-c1b39.appspot.com",
+  messagingSenderId: "506994635301",
+  appId: "1:506994635301:web:97dca6d96d18e4f1fec5cc",
+  measurementId: "G-MQL8W1ZZ8J"
 };
 
 //import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
