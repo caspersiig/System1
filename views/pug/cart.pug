@@ -1,6 +1,6 @@
 HTML 
 head 
-    title My Cart
+    title Indkøbskurv
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
     script(defer src="../JS/payCartEvent.js")
@@ -28,15 +28,15 @@ body
                                     a(href="https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-myshop" target="_blank")      
                                         img(src="/IMG/mobilepayLogo3.png" id="mobilepay")
     div(id="dent")
-    h1(id="cartTitle") Shopping cart
+    h1(id="cartTitle") Indkøbskurv
 
     div(id="body")
         table(id="table")
             tr(class="cart_tr")
-                th(id="th_product") Product 
-                th(id="th_price") Unit Price 
-                th(id="th_quantity") Quantity 
-                th(id="th_total") Total Price
+                th(id="th_product") Produkt  
+                th(id="th_price") Pr. stk.  
+                th(id="th_quantity") Antal 
+                th(id="th_total") Pris I alt 
             each item in list
                 tr(class="cart_tr")
                     td(class="tc_product")
@@ -61,7 +61,7 @@ body
         div(id="betaling")
             button(class="knap")
                 div(id="betal_text")
-                    p(class="betal_txt")="Price: " + total + " DKK"           
+                    p(class="betal_txt")="Pris: " + total + " DKK"           
     include footer.pug 
 
 
