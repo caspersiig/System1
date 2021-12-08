@@ -239,11 +239,17 @@ app.get("/stripe-order-succesful&verified", (req, res) => {
 
   let toString = cartToString(sorted_cart);
 
+  try {
+    mailToClient(res, toString, client_name, client_email, client_time);
+    mailToOwner(res,toString, client_name, client_tlf, client_time);
+  } catch (error) {
+    console.log(error)
+  }
+  
 
-  mailToClient(res, toString, client_name, client_email, client_time);
-  mailToOwner(res,toString, client_name, client_tlf, client_time);
+  req.session.destroy();
 
-  res.render("pug/succes_url.pug", {name:client_name, tlf: client_tlf, email:client_email, time:client_time});
+  res.render("pug/succes_url.pug", {total: 0, quantity: 0, name:client_name, tlf: client_tlf, email:client_email, time:client_time});
 })
 
 app.get("/stripe-order-negated", (req, res) => {

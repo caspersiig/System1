@@ -48,7 +48,7 @@ export function mailToClient(res, toString, client_name, client_email, client_ti
            from: process.env.GMAIL_MAIL,
            to: client_email,
            subject: `From: ${process.env.GMAIL_MAIL} || ORDREBEKRÆFTELSE`,
-           text: "DIN ORDRE: \n \n" + toString +"\nTak for dit køb "+ client_name +". Din mad kan afhentes kl:"+ client_time +". Vi håber du vil blive tilfreds med din ordre \n"+ `From: ${process.env.GMAIL_MAIL}`,
+           text: "\nTak for dit køb "+ client_name +". Din mad kan afhentes kl:"+ client_time +". Vi håber du vil blive tilfreds med din ordre \n\n"+ "DIN ORDRE: \n \n" + toString,
        }
      
        transporter.sendMail(mailOptions, (err, info) => {

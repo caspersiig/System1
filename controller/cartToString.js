@@ -13,7 +13,7 @@ export function cartToString(sorted_cart){
         stringify += item.titel + "\t \t \t Antal: " + item.quantity + "\t \t \t Total: " + item.pris * item.quantity + "DKK \n"
     }
 
-    stringify += "\n \t\t\t TOTAL: " + totalSum + "DKK";
+    stringify += "\nTOTAL: " + totalSum + " DKK";
 
     return stringify;
 
