@@ -47,11 +47,6 @@ html(lang="en")
                     |   Pris
                     input(type='text', name='pris', value='')
                 input(id="upretmad",type='submit', value='Opdater')
-            each val in madvogn
-                p= val.docID
-                p= val.Beskrivelse
-                p= val.Adresse
-                p= val.Placering 
             h2 Opdater Madvogn
             form(id="formmadvogn")
                 p
@@ -64,4 +59,78 @@ html(lang="en")
                     |   Beskrivelse(noget med åbningstider):
                     input(type='text', name='Beskrivelse', value='')
                 input(id = "upmadvogne",type='submit', value='Opdater')
+
+            - var  madvognsobject= Object.fromEntries(madvogn);
+            table
+                tr
+                    td= "Navn:"
+                    td= "Beskrivelse:"
+                    td= "Adresse:"
+                    td= "Langtitude: " 
+                    td= "Longtitude: "
+                each val in madvognsobject 
+                    tr
+                        td= val.docID
+                        td= val.Beskrivelse
+                        td= val.Adresse
+                        td= val.Placering._lat 
+                        td= val.Placering._long 
+            
+            h2 Slet madvogne 
+            - var  madvognsobject= Object.fromEntries(madvogn);
+            table
+                tr
+                    td= "Navn:"
+                    td= "Beskrivelse:"
+                    td= "Adresse:"
+                    td= "Langtitude: " 
+                    td= "Longtitude: "
+                    td= "Slet knap"
+                each val in madvognsobject 
+                    tr
+                        td= val.docID
+                        td= val.Beskrivelse
+                        td= val.Adresse
+                        td= val.Placering._lat 
+                        td= val.Placering._long 
+                        td 
+                            button(id="sletKnap",data=val) slet
+
+            h2 Slet Madretter 
+            - var  retmadobject= Object.fromEntries(retmad);
+            table
+                tr
+                    td= "Overmenu:"
+                    td= "Undermenu:"
+                    td= "mad ret:"
+                    td= "Beskrivelse: " 
+                    td= "Pris: "
+                each val in retmadobject
+                        each [retnavne, ret] of Object.entries(val)
+                            if retnavne != "docID"
+                                tr
+                                    if val[retnavne].Pris == undefined
+                                        each [retnavne2, ret2] of Object.entries(val[retnavne])
+                                            tr
+                                                td=val.docID
+                                                td=retnavne
+                                                td=retnavne2
+                                                if ret2.Beskrivelse != undefined 
+                                                    td=ret2.Beskrivelse
+                                                td=ret2.Pris
+                                                td 
+                                                    button(id="sletField",data=[val.docID,retnavne2]) slet
+                                    else
+                                        td=val.docID
+                                        td=retnavne
+                                        if ret.Beskrivelse != undefined 
+                                            td=ret.Beskrivelse
+                                        td=ret.Pris
+                                        td 
+                                            button(id="sletDoc",data=[val.docID,retnavne2]) slet
+                                    
+                       
+                
+                            
+
                 

@@ -20,7 +20,6 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 const db = getFirestore(app);
 
-
 document.getElementById("login").addEventListener("click", ()=>{
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -144,7 +143,8 @@ document.getElementById("upretmad").addEventListener("click", async (event)=>{
   );
 }
 })
-//yikes
+
+
 document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('formmadvogn');
@@ -163,3 +163,22 @@ document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
     Placering:new GeoPoint ( splice[0] ,splice[1] )
   })
 })
+
+let elementsArray = document.querySelectorAll("sletField");
+
+elementsArray.forEach(function(elem) {
+  console.log(elem)
+    elem.addEventListener("click", function() {
+        console.log("elem.data")
+    });
+});
+
+
+let elementsArray2 = document.querySelectorAll("sletDoc");
+
+elementsArray2.forEach(function(elem) {
+    elem.addEventListener("click", function() {
+      console.log(elem.data)
+
+    });
+});

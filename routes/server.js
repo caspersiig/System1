@@ -177,7 +177,9 @@ app.get('/admin',async (req, res) => {
     res.render('pug/admin.pug')
   }else{
     let fetch = await getMadvogne();
-    res.render('pug/adminHemlig.pug',{navn:req.session.navn,madvogn:fetch})
+    let fetchmad = await getMessages();
+    console.log(fetchmad)
+    res.render('pug/adminHemlig.pug',{navn:req.session.navn,madvogn:fetch,retmad:fetchmad})
   }
 });
 
