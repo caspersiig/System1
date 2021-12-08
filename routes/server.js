@@ -205,11 +205,20 @@ app.get('/contact', (req, res) => {
   let cart_summary = cartSum(cart);
 
   res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
+
 });
 
-app.post('/send-contact-form', async (req, res) => {
+  app.post('/send-contact-form', async (req, res) => {
 
-  mailContact(req,res);
+  try {
+    mailContact(req,res);
+    res.send("Thanks for submitting your contact form, we will get back to you as soon as possible")
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500);
+  }
+  
 
 });
 

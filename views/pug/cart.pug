@@ -54,18 +54,18 @@ body
                     td(class="tc_cancel")
                         button(class="cancel_btn" titel=item.titel quan=item.quantity)
                             img(src="../IMG/cancel.png" class="cancel")
-    div(id="kunde_info")
-        p Navn:
-        input(type="text" value="Navn" class="input_kunde" id="kunde_navn")
-        p Telefnr:
-        input(type="tel" value="12345678" class="input_kunde" id="kunde_tlf")
-        p Email:
-        input(type="email" value="test@test.test" class="input_kunde" id="kunde_email")
-        p Afhentings-tidspunkt (15:00 - 20:30)
-        input(type="text" class="input_kunde" id="time" placeholder="Time")
-        div(id="betaling")
-            button(class="knap")
-                div(id="betal_text")
-                    p(class="betal_txt")="Price: " + total + " DKK"           
-    include footer.pug 
+        div(id="kunde_info")
+            p Navn:
+            input(type="text" placeholder="Navn" class="input_kunde" id="kunde_navn")
+            p Telefnr:
+            input(type="tel" placeholder="12345678" class="input_kunde" id="kunde_tlf")
+            p Email:
+            input(type="email" placeholder="test@test.test" class="input_kunde" id="kunde_email")
+            p Afhentings-tidspunkt (15:00 - 20:30)
+            input(type="text" class="input_kunde" id="time" placeholder="Time")
+            div(id="betaling")
+                button(class="knap")
+                    div(id="betal_text")
+                        p(class="betal_txt")="Price: " + total + " DKK"           
+include footer.pug 
 
