@@ -28,7 +28,7 @@ body{
 .footer{
     position: relative;
     width: 100%;
-    height: 140px;
+    height: 155px;
     bottom: 0;
     background-color: var(--color_orange);
     color: var(--color_white);

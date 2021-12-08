@@ -26,13 +26,15 @@ export function mailToOwner(res,toString, client_name, client_tlf, client_time){
   
        transporter.sendMail(mailOptions, (err, info) => {
         if(err){
-         console.log(err);
-         res.sendStatus(500);
+            console.log(err);
+            res.send('error');
         }
         else{ 
-            console.log("Email succesfully sent")
-            res.sendStatus(200);
+            console.log('Email succesfully sent')
+            res.send('succes');
         }
+
+        
     })
 }
 //______________________________________________________________________________________________________________________________
@@ -50,14 +52,14 @@ export function mailToClient(res, toString, client_name, client_email, client_ti
        }
      
        transporter.sendMail(mailOptions, (err, info) => {
-           if(err){
+        if(err){
             console.log(err);
-            res.sendStatus(500);
-           }
-           else{ 
-               console.log("Email succesfully sent")
-               res.sendStatus(200);
-           }
+            res.send('error');
+        }
+        else{ 
+            console.log('Email succesfully sent')
+            res.send('succes');
+        }
        })
 
 }
@@ -80,12 +82,12 @@ export function mailContact(req, res){
 
        transporter.sendMail(mailOptions, (err, info) => {
         if(err){
-         console.log(err);
-         res.sendStatus(500);
+            console.log(err);
+            res.send('error');
         }
         else{ 
-            console.log("Email succesfully sent")
-            res.sendStatus(200);
+            console.log('Email succesfully sent')
+            res.send('succes');
         }
     })
      
