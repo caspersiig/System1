@@ -227,29 +227,29 @@ app.get('/contact', (req, res) => {
 //---------------------------------------------------------------------------------------------------------------------------
 
 app.get("/stripe-order-succesful&verified", (req, res) => {
-
-  let client_name = req.session.client_info.client_name;
-  let client_email = req.session.client_info.client_email;
-  let client_tlf = req.session.client_info.client_tlf;
-  let client_time = req.session.client_info.client_time;
-
-  let cart = req.session.cart || [];
-
-  let sorted_cart = quantity(cart);
-
-  let toString = cartToString(sorted_cart);
-
   try {
-    mailToClient(res, toString, client_name, client_email, client_time);
-    mailToOwner(res,toString, client_name, client_tlf, client_time);
-  } catch (error) {
-    console.log(error)
-  }
+    let client_name = req.session.client_info.client_name;
+    let client_email = req.session.client_info.client_email;
+    let client_tlf = req.session.client_info.client_tlf;
+    let client_time = req.session.client_info.client_time;
   
-
-  req.session.destroy();
-
-  res.render("pug/succes_url.pug", {total: 0, quantity: 0, name:client_name, tlf: client_tlf, email:client_email, time:client_time});
+    let cart = req.session.cart || [];
+  
+    let sorted_cart = quantity(cart);
+  
+    let toString = cartToString(sorted_cart);
+  
+    try {
+      mailToClient(res, toString, client_name, client_email, client_time);
+      mailToOwner(res,toString, client_name, client_tlf, client_time);
+    } catch (error) {
+      console.log(error)
+    }
+    req.session.destroy();
+    res.render("pug/succes_url.pug", {total: 0, quantity: 0, name:client_name, tlf: client_tlf, email:client_email, time:client_time});
+  } catch (e) {
+    console.log(e)
+  }
 })
 
 app.get("/stripe-order-negated", (req, res) => {
@@ -257,35 +257,37 @@ app.get("/stripe-order-negated", (req, res) => {
 })
 
 app.post('/create-checkout-session', async (req, res) =>{
-  let cart = req.session.cart || [];
-
-  let sorted_cart = quantity(cart);
-
-   try {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      mode: 'payment',
-      line_items: sorted_cart.map((item) => {
-        return {
-          price_data: {
-            currency: 'dkk',
-            product_data: {
-              name: item.titel,
-              images: []
+  try {
+    let cart = req.session.cart || [];
+    let sorted_cart = quantity(cart);
+     try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        mode: 'payment',
+        line_items: sorted_cart.map((item) => {
+          return {
+            price_data: {
+              currency: 'dkk',
+              product_data: {
+                name: item.titel,
+                images: []
+              },
+              unit_amount: item.pris * 100,
             },
-            unit_amount: item.pris * 100,
-          },
-          quantity: item.quantity
-        }
-      }),
-      success_url: 'http://localhost:3000/stripe-order-succesful&verified',
-      cancel_url: 'http://localhost:3000/stripe-order-negated'
-    })
-    res.json({ url: session.url })
+            quantity: item.quantity
+          }
+        }),
+        success_url: 'http://localhost:3000/stripe-order-succesful&verified',
+        cancel_url: 'http://localhost:3000/stripe-order-negated'
+      })
+      res.json({ url: session.url })
+    } catch (e) {
+      console.log({ error: e.message })
+      res.status(500)
+      return;
+    }
   } catch (e) {
-    console.log({ error: e.message })
-    res.status(500)
-    return;
+    console.log(e)
   }
 })
 
