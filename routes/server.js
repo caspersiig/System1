@@ -186,7 +186,7 @@ app.get('/admin',async (req, res) => {
 app.post('/admindata', (req, res) => {
   let data = req.body
   console.log(data.uid)
-  if(data.email == "caspersiig@gmail.com" && data.uid == "bdnxrzFaIwhYfzpTRRUJRcG1xg73" && data.emailVerified || data.email == "ammisbutterchicken@gmail.com" && data.uid == "uu7aCFxAJdcnncm3aOXstf8SJ8j1" && data.emailVerified || data.email == "adm.ammis.butterchicken@gmail.com" && data.uid == "Jt3jhu3hcbOHx5cmU6qKbiHgC1K2"){
+  if(data.email == process.env.ADMIN_1_MAIL && data.uid == process.env.ADMIN_1_UID && data.emailVerified || data.email == ADMIN_2_MAIL && data.uid == ADMIN_2_UID){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
     req.session.navn = data.displayName
     req.session.uid = data.uid
