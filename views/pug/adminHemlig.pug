@@ -105,6 +105,7 @@ html(lang="en")
                     td= "mad ret:"
                     td= "Beskrivelse: " 
                     td= "Pris: "
+                    td= "Slet knap"
                 each val in retmadobject
                         each [retnavne, ret] of Object.entries(val)
                             if retnavne != "docID"
@@ -117,17 +118,22 @@ html(lang="en")
                                                 td=retnavne2
                                                 if ret2.Beskrivelse != undefined 
                                                     td=ret2.Beskrivelse
+                                                else 
+                                                    td="Ingen beskrivelse"
                                                 td=ret2.Pris
                                                 td 
-                                                    button(id="sletField",data=[val.docID,retnavne2]) slet
+                                                    button(class="sletField",data=[val.docID,retnavne2]) slet
                                     else
                                         td=val.docID
+                                        td="Ingen undermenu"
                                         td=retnavne
                                         if ret.Beskrivelse != undefined 
                                             td=ret.Beskrivelse
+                                        else 
+                                            td="Ingen beskrivelse"
                                         td=ret.Pris
                                         td 
-                                            button(id="sletDoc",data=[val.docID,retnavne2]) slet
+                                            button(class="sletDoc",data=[val.docID,retnavne2]) slet
                                     
                        
                 

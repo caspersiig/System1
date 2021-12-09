@@ -53,15 +53,13 @@ async function send (user){
         location.reload();
       });
 }
-//damn Big t what the fuck
 
 document.getElementById("addmadvogne").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('madvogn');
   const formData = new FormData(form);
-  const params = new URLSearchParams(formData);
   const map1 = new Map();
-  for (const [key, value] of params.entries()) {
+  for (const [key, value] of formData.entries()) {
     map1.set(key,value)
     console.log(key)
   }
