@@ -7,7 +7,6 @@ import pug from "pug";
 import Stripe from "stripe"
 const stripe = new Stripe(process.env.STRIPE_KEY_TEST);
 
-
 import nodemailer from 'nodemailer';
 
 import { quantity } from "../controller/quantityControl.js";
@@ -15,7 +14,6 @@ import {getMessages,getMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
 import { cartToString } from '../controller/cartToString.js';
 import { mailToOwner, mailToClient, mailContact } from '../controller/nodemailer.js';
-
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -49,57 +47,57 @@ app.use(express.static('views'));
 
 //PUG /home
 app.get('/', async(req, res) => {
-  let cart = req.session.cart || [];
-  let cart_summary = cartSum(cart);
+  try {
+    let cart = req.session.cart || [];
+    let cart_summary = cartSum(cart);
+    let session_madvogne = req.session.madvogne || [];
 
-  let session_madvogne = req.session.madvogne || [];
-
-  if(req.session.madvogne == undefined){
-    let fetch = await getMadvogne();
-    fetch.forEach(ele =>{
-      session_madvogne.push(ele)
-    })
-  }
-    req.session.madvogne = session_madvogne;
-
-  res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity,kort:JSON.stringify(req.session.madvogne)})
+      if(req.session.madvogne == undefined){
+        let fetch = await getMadvogne();
+        fetch.forEach(ele =>{
+        session_madvogne.push(ele)
+     })
+    }
+      req.session.madvogne = session_madvogne;
+      res.render('pug/homepage.pug', {total: cart_summary.total, quantity: cart_summary.quantity,kort:JSON.stringify(req.session.madvogne)})
+    } catch (e) {
+      console.log(e)
+    }
 });
 
 //PUG /cart
 app.get('/Cart', (req, res) => {
-  let cart = req.session.cart || [];
-  let cart_summary = cartSum(cart);
+  try {
+    let cart = req.session.cart || [];
+    let cart_summary = cartSum(cart);
+    let sorted_cart = quantity(cart); 
 
-  let sorted_cart = quantity(cart);
-    
-  req.session.cart = cart;
+    req.session.cart = cart;
 
-  //console.log(sorted_cart)
-
-  res.render('pug/cart.pug', {list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity})
+    res.render('pug/cart.pug', {list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity})
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 //PUG /menu
 app.get('/menu', async (req, res) => {
+  try {
+    let cart = req.session.cart || [];
+    let cart_summary = cartSum(cart);
+    let session_menu = req.session.menu || [];
 
-  let cart = req.session.cart || [];
-  let cart_summary = cartSum(cart);
-
-  let session_menu = req.session.menu || [];
-
-  if(req.session.menu == undefined){
-    let fetch = await getMessages();
-    fetch.forEach(ele =>{
+    if(req.session.menu == undefined){
+      let fetch = await getMessages();
+      fetch.forEach(ele =>{
       session_menu.push(ele)
     })
-
     req.session.menu = session_menu;
   };
-
-  //console.log(req.session.menu)
-
   res.render('pug/menu.pug', {items:session_menu, total: cart_summary.total, quantity: cart_summary.quantity}) // items er faktisk et array i know its crazy --Oliver: mate du er crazy
-
+  } catch (e) {
+    console.log(e)
+  }
 });
 
 
