@@ -16,7 +16,6 @@ export function quantity(cart){
             let found = quantity_cart.find(item1 => item.titel == item1.titel);
             found.quantity += 1;
         }
-
     }
     return quantity_cart;
 }
