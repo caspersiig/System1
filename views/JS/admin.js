@@ -84,7 +84,7 @@ if(map1.get('undermenu') == ""){
  //object der bliver added bliver gjort klar så den bare mangler overmenu
  let tempret = map1.get('retnavn')
  let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
- object3 = {}
+ let object3 = {}
  object3[tempret] = object
 
  // tager alle andre madder under overmenu'en og gør dem klar til at komme med overmenu'en
@@ -98,7 +98,7 @@ if(map1.get('undermenu') == ""){
      if(data.length == 5){
        let tempobject2 = {}
        tempobject2[data[data.length-3]] = tempobject
-       if(Object.keys(object3).includes(data[data.length-4])!= undefined){
+       if(Object.keys(object3).includes(data[data.length-4])!= false){
          object3[data[data.length-4]][data[data.length-3]] = tempobject
          //object3.undermenu.
        }else{
@@ -135,7 +135,7 @@ if(map1.get('undermenu') == ""){
       if(data.length == 5){
         let tempobject2 = {}
         tempobject2[data[data.length-3]] = tempobject
-        if(Object.keys(object3).includes(data[data.length-4])!= undefined){
+        if(Object.keys(object3).includes(data[data.length-4])!= false){
           object3[data[data.length-4]][data[data.length-3]] = tempobject
           //object3.undermenu.
         }else{
