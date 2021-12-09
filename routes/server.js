@@ -178,14 +178,14 @@ app.get('/admin',async (req, res) => {
   }else{
     let fetch = await getMadvogne();
     let fetchmad = await getMessages();
-    console.log(fetchmad)
+    //console.log(fetchmad)
     res.render('pug/adminHemlig.pug',{navn:req.session.navn,madvogn:fetch,retmad:fetchmad})
   }
 });
 
 app.post('/admindata', (req, res) => {
   let data = req.body
-  console.log(data.uid)
+  //console.log(data.uid)
   if(data.email == process.env.ADMIN_1_MAIL && data.uid == process.env.ADMIN_1_UID && data.emailVerified || data.email == ADMIN_2_MAIL && data.uid == ADMIN_2_UID){
     //accesstoken giver dig sjovt nok adgang til hjemmesiden så længde den er aktiv :wauw:
     req.session.navn = data.displayName
