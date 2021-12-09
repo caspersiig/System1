@@ -23,14 +23,19 @@
   height: 2000px;
   font-family: Arial, Helvetica, sans-serif;
 }
-#sletKnap{
-  background-color: red;
-}
+
 
 #retmad{
   display: inline-flex;
   flex-direction: column;
   width: 500px;
+}
+
+.sletField{
+  background-color: red;
+}
+.sletDoc{
+  background-color: red;
 }
 
 p{

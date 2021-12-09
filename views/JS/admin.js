@@ -48,8 +48,6 @@ async function send (user){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(user)
       }).then(res => {
-          console.log(res)
-        console.log("Request complete! response:", res.status);
         location.reload();
       });
 }
@@ -61,7 +59,6 @@ document.getElementById("addmadvogne").addEventListener("click", async (event)=>
   const map1 = new Map();
   for (const [key, value] of formData.entries()) {
     map1.set(key,value)
-    console.log(key)
   }
 
   let splice = map1.get('Placering').split(',')
@@ -80,7 +77,6 @@ document.getElementById("addret").addEventListener("click", async (event)=>{
   const map1 = new Map();
   for (const [key, value] of formData.entries()) {
     map1.set(key,value)
-    console.log(key)
   }
   map1.get()
   //if undermenu eller else ingen undermenu
@@ -97,29 +93,24 @@ if(map1.get('undermenu') == ""){
  elementsArray2.forEach(function(elem) {
    let data = elem.attributes.data.nodeValue.split('*')
    if(data[0] == map1.get('overmenu')){
-     console.log("fandt andet object der har samme overmenu")
      let tempobject = {"Beskrivelse":data[data.length-2],"Pris":data[data.length-1]}
      //temp object er klar til indten at få en under menu hvis den skal have sådan en
      if(data.length == 5){
        let tempobject2 = {}
        tempobject2[data[data.length-3]] = tempobject
-       console.log("prøver at slå undermenuer sammen")
        if(Object.keys(object3).includes(data[data.length-4])!= undefined){
          object3[data[data.length-4]][data[data.length-3]] = tempobject
          //object3.undermenu.
        }else{
-         console.log("Unik under menu'er slå den sammen med overmenu")
          //giver temp object sin egen unike undermenu          
          object3[data[data.length-4]] = tempobject2
        }
      }else{
-       console.log("Ingen under menu'er slå den sammen med overmenu")
        object3[data[data.length-3]] = tempobject
      }
    }
  });
 
- console.log(object3.casperundertitel)
  await setDoc(doc(db,'Menu',map1.get('overmenu')),
  object3
  )
@@ -171,7 +162,6 @@ document.getElementById("upretmad").addEventListener("click", async (event)=>{
   const map1 = new Map();
   for (const [key, value] of formData.entries()) {
     map1.set(key,value)
-    console.log(key)
   }
 
   const docen = doc(db, "Menu", map1.get('overmenu'));
@@ -207,7 +197,6 @@ document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
   const map1 = new Map();
   for (const [key, value] of formData.entries()) {
     map1.set(key,value)
-    console.log(key)
   }
 
   let splice = map1.get('Placering').split(',')
@@ -234,7 +223,6 @@ elementsArray2.forEach(function(elem) {
 
 async function sletField(elemt) {
   let data = elemt.srcElement.attributes.data.nodeValue.split(',')
-  console.log(data)
 
 // Remove the 'capital' field from the document
 
@@ -249,7 +237,6 @@ async function sletDoc(elemt) {
   if(data.length < 2){
     await deleteDoc(doc(db, "Madvogne", data[0]));
   }else{
-    console.log(data)
     await setDoc(doc(db,'Menu',data[0]),
     {[data[1]]:""}
     )
