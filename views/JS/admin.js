@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js'
 import { getAuth, signInWithPopup, GoogleAuthProvider  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js'
-import { setDoc, doc,getFirestore,GeoPoint,updateDoc} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js'
+import { setDoc, doc,getFirestore,GeoPoint,updateDoc,deleteDoc} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -70,49 +70,106 @@ document.getElementById("addmadvogne").addEventListener("click", async (event)=>
     Beskrivelse:map1.get('Beskrivelse'),
     Placering:new GeoPoint ( splice[0] ,splice[1] )
   })
+  location.reload()
 })
-
+// noget der
 document.getElementById("addret").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('retmad');
   const formData = new FormData(form);
-  const params = new URLSearchParams(formData);
   const map1 = new Map();
-  for (const [key, value] of params.entries()) {
+  for (const [key, value] of formData.entries()) {
     map1.set(key,value)
     console.log(key)
   }
   map1.get()
+  //if undermenu eller else ingen undermenu
 if(map1.get('undermenu') == ""){
-  let tempret = map1.get('retnavn')
-  let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
-  let object2 = {}
-  object2[tempret] = object
+ //object der bliver added bliver gjort klar så den bare mangler overmenu
+ let tempret = map1.get('retnavn')
+ let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
+ object3 = {}
+ object3[tempret] = object
 
-  await setDoc(doc(db,'Menu',map1.get('overmenu')),
-  object2
-  )
+ // tager alle andre madder under overmenu'en og gør dem klar til at komme med overmenu'en
+
+ let elementsArray2 = document.querySelectorAll(".overmenu");
+ elementsArray2.forEach(function(elem) {
+   let data = elem.attributes.data.nodeValue.split('*')
+   if(data[0] == map1.get('overmenu')){
+     console.log("fandt andet object der har samme overmenu")
+     let tempobject = {"Beskrivelse":data[data.length-2],"Pris":data[data.length-1]}
+     //temp object er klar til indten at få en under menu hvis den skal have sådan en
+     if(data.length == 5){
+       let tempobject2 = {}
+       tempobject2[data[data.length-3]] = tempobject
+       console.log("prøver at slå undermenuer sammen")
+       if(Object.keys(object3).includes(data[data.length-4])!= undefined){
+         object3[data[data.length-4]][data[data.length-3]] = tempobject
+         //object3.undermenu.
+       }else{
+         console.log("Unik under menu'er slå den sammen med overmenu")
+         //giver temp object sin egen unike undermenu          
+         object3[data[data.length-4]] = tempobject2
+       }
+     }else{
+       console.log("Ingen under menu'er slå den sammen med overmenu")
+       object3[data[data.length-3]] = tempobject
+     }
+   }
+ });
+
+ console.log(object3.casperundertitel)
+ await setDoc(doc(db,'Menu',map1.get('overmenu')),
+ object3
+ )
+
 }else{
+  //object der bliver added bliver gjort klar så den bare mangler overmenu
   let tempret = map1.get('retnavn')
   let object = {"Beskrivelse":map1.get('beskrivelse'),"Pris":map1.get("pris")}
   let object2 = {}
   object2[tempret] = object
-  let object3 = {}
+  let object3 = {};
   object3[map1.get('undermenu')] = object2
+
+  // tager alle andre madder under overmenu'en og gør dem klar til at komme med overmenu'en
+
+  let elementsArray2 = document.querySelectorAll(".overmenu");
+  elementsArray2.forEach(function(elem) {
+    let data = elem.attributes.data.nodeValue.split('*')
+    if(data[0] == map1.get('overmenu')){
+      let tempobject = {"Beskrivelse":data[data.length-2],"Pris":data[data.length-1]}
+      //temp object er klar til indten at få en under menu hvis den skal have sådan en
+      if(data.length == 5){
+        let tempobject2 = {}
+        tempobject2[data[data.length-3]] = tempobject
+        if(Object.keys(object3).includes(data[data.length-4])!= undefined){
+          object3[data[data.length-4]][data[data.length-3]] = tempobject
+          //object3.undermenu.
+        }else{
+          //giver temp object sin egen unike undermenu          
+          object3[data[data.length-4]] = tempobject2
+        }
+      }else{
+        object3[data[data.length-3]] = tempobject
+      }
+    }
+  });
 
   await setDoc(doc(db,'Menu',map1.get('overmenu')),
   object3
   )
 }
+location.reload()
 })
 
 document.getElementById("upretmad").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('formretmad');
   const formData = new FormData(form);
-  const params = new URLSearchParams(formData);
   const map1 = new Map();
-  for (const [key, value] of params.entries()) {
+  for (const [key, value] of formData.entries()) {
     map1.set(key,value)
     console.log(key)
   }
@@ -140,16 +197,15 @@ document.getElementById("upretmad").addEventListener("click", async (event)=>{
     object3
   );
 }
+location.reload()
 })
-
 
 document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
   event.preventDefault();
   const form = document.getElementById('formmadvogn');
   const formData = new FormData(form);
-  const params = new URLSearchParams(formData);
   const map1 = new Map();
-  for (const [key, value] of params.entries()) {
+  for (const [key, value] of formData.entries()) {
     map1.set(key,value)
     console.log(key)
   }
@@ -160,23 +216,43 @@ document.getElementById("upmadvogne").addEventListener("click", async (event)=>{
     Beskrivelse:map1.get('Beskrivelse'),
     Placering:new GeoPoint ( splice[0] ,splice[1] )
   })
+  location.reload()
 })
 
-let elementsArray = document.querySelectorAll("sletField");
+let elementsArray = document.querySelectorAll(".sletField");
 
 elementsArray.forEach(function(elem) {
-  console.log(elem)
-    elem.addEventListener("click", function() {
-        console.log("elem.data")
-    });
+    elem.addEventListener("click", (event)=>{sletField(event)})
 });
 
 
-let elementsArray2 = document.querySelectorAll("sletDoc");
+let elementsArray2 = document.querySelectorAll(".sletDoc");
 
 elementsArray2.forEach(function(elem) {
-    elem.addEventListener("click", function() {
-      console.log(elem.data)
-
-    });
+    elem.addEventListener("click", (event)=>{sletDoc(event)});
 });
+
+async function sletField(elemt) {
+  let data = elemt.srcElement.attributes.data.nodeValue.split(',')
+  console.log(data)
+
+// Remove the 'capital' field from the document
+
+  await setDoc(doc(db,'Menu',data[0]),
+  {[data[1]]:""}
+  )
+  location.reload()
+}
+
+async function sletDoc(elemt) {
+  let data = elemt.srcElement.attributes.data.nodeValue.split(',')
+  if(data.length < 2){
+    await deleteDoc(doc(db, "Madvogne", data[0]));
+  }else{
+    console.log(data)
+    await setDoc(doc(db,'Menu',data[0]),
+    {[data[1]]:""}
+    )
+  }
+  location.reload()
+}

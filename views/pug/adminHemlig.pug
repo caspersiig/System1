@@ -94,7 +94,7 @@ html(lang="en")
                         td= val.Placering._lat 
                         td= val.Placering._long 
                         td 
-                            button(id="sletKnap",data=val) slet
+                            button(class="sletDoc",data=val.docID) slet
 
             h2 Slet Madretter 
             - var  retmadobject= Object.fromEntries(retmad);
@@ -113,7 +113,7 @@ html(lang="en")
                                     if val[retnavne].Pris == undefined
                                         each [retnavne2, ret2] of Object.entries(val[retnavne])
                                             tr
-                                                td=val.docID
+                                                td(class="overmenu",data=val.docID+"*"+retnavne+"*"+retnavne2+"*"+ret2.Beskrivelse+"*"+ret2.Pris)=val.docID
                                                 td=retnavne
                                                 td=retnavne2
                                                 if ret2.Beskrivelse != undefined 
@@ -122,9 +122,9 @@ html(lang="en")
                                                     td="Ingen beskrivelse"
                                                 td=ret2.Pris
                                                 td 
-                                                    button(class="sletField",data=[val.docID,retnavne2]) slet
+                                                    button(class="sletField",data=val.docID+","+retnavne+","+retnavne2) slet
                                     else
-                                        td=val.docID
+                                        td(class="overmenu",data=val.docID+"*"+retnavne+"*"+ret.Beskrivelse+"*"+ret.Pris)=val.docID
                                         td="Ingen undermenu"
                                         td=retnavne
                                         if ret.Beskrivelse != undefined 
@@ -133,7 +133,7 @@ html(lang="en")
                                             td="Ingen beskrivelse"
                                         td=ret.Pris
                                         td 
-                                            button(class="sletDoc",data=[val.docID,retnavne2]) slet
+                                            button(class="sletDoc",data=val.docID+","+retnavne) slet
                                     
                        
                 
