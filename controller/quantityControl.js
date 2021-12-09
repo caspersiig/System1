@@ -6,6 +6,7 @@ export function quantity(cart) {
     for (const item of cart) {
         let here = names.includes(item.titel);
         
+        if (typeof item !== "object") throw new TypeError ("cart.item is not an object")
         if (typeof item.titel !== "string") throw new TypeError ("item.titel is not an String")
         if (typeof item.imgsrc !== "string") throw new TypeError ("item.imgsrc is not an string") 
     

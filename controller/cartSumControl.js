@@ -4,6 +4,7 @@ export function cartSum(cart){
     let quantity = cart.length;
 
     for (const item of cart) {
+        if (typeof item !== "object") throw new TypeError ("cart.item is not an object")
         if (typeof item.pris === "string") throw new TypeError ("item.pris is a String and should be a number")
         if (isNaN(item.pris)) throw new TypeError ("item.pris is not a Number")
         if(item.pris <= 0) throw new RangeError ("item.pris is equal to or less than 0)")
