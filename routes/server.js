@@ -85,6 +85,7 @@ app.get('/menu', async (req, res) => {
 
     if(req.session.menu == undefined){
       let fetch = await getMessages();
+      console.log(fetch)
       fetch.forEach(ele =>{
       session_menu.push(ele)
     })
@@ -102,9 +103,6 @@ app.post('/postCartClientInfo', async(req, res) => {
   req.session.client_info = data;
   res.sendStatus(200)
 });
-
-
-
 
 
 //---------------------------------------------------------------------------------------------------------------------------
