@@ -11,8 +11,6 @@ import { getAuth} from "firebase/auth";
 
 // import { getAnalytics } from "firebase/analytics";
 import {getFirestore,collection,getDocs,doc,deleteDoc,addDoc,setDoc} from 'firebase/firestore'
-// To apply the default browser preference instead of explicitly setting it.
-// firebase.auth().useDeviceLanguage();
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrkuV2MsSfgb4orDT3ZqsZuBYN4orI6EY",
@@ -24,25 +22,6 @@ const firebaseConfig = {
   measurementId: "G-MQL8W1ZZ8J"
 };
 
-//import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
-
-
-// Build Firebase credential with the Google ID token.
-//var id_token = googleUser.getAuthResponse().id_token
-//const credential = GoogleAuthProvider.credential(id_token);
-
-// Sign in with credential from the Google user.
-//const auth = getAuth();
-//signInWithCredential(auth, credential).catch((error) => {
-  // Handle Errors here.
-//  const errorCode = error.code;
-//  const errorMessage = error.message;
-  // The email of the user's account used.
- // const email = error.email;
-  // The AuthCredential type that was used.
- // const credential = GoogleAuthProvider.credentialFromError(error);
-  // ...
-//});
 
 // Initialize Firebase
 const app2 = initializeApp(firebaseConfig);
@@ -87,4 +66,3 @@ export async function getMessages(){
     return map1;
   }
 
-//hvad gør vi nu?!

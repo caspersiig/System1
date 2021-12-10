@@ -7,8 +7,6 @@ in_quantity.forEach(input => {
 
     let before_quan = parseInt(input.value);
     
-    console.log(before_quan)
-
   input.addEventListener('change', async() => {
 
     let parent = input.parentElement.parentElement; //TABLEROW

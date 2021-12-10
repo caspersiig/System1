@@ -7,7 +7,6 @@ const C_name = document.querySelector('#navn');
 const C_subject = document.querySelector('#emne');
 const C_text = document.querySelector('#tekst');
 
-window.alert("AALERT!")
 
 
 contactForm.addEventListener('submit',(e)=>{
@@ -32,7 +31,6 @@ if(C_name.value == 'a' || C_email.value == '' || C_text.value == ''){
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.onload = function(){
     if(xhr.responseText == 'succes'){
-        window.alert("SUCCESFUL - Thank you for the submission. We will review your request and get back to you as fast as possible. Best regards Top100Movies");
         C_name.value = ''
         C_email.value = ''
         C_subject.value = ''
