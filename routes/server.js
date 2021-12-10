@@ -7,30 +7,19 @@ import pug from "pug";
 import Stripe from "stripe"
 const stripe = new Stripe(process.env.STRIPE_KEY_TEST);
 
-import nodemailer from 'nodemailer';
-
 import { quantity } from "../controller/quantityControl.js";
 import {getMessages,getMadvogne} from "../controller/firestore.js"
 import {cartSum} from "../controller/cartSumControl.js"
 import { cartToString } from '../controller/cartToString.js';
 import { mailToOwner, mailToClient, mailContact } from '../controller/nodemailer.js';
 
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
 import session from 'express-session';
 
 //framework krævet for at læse req.body (brugt i post method)
 import bodyParser from "body-parser";
-import { get } from "http";
-import { connectFirestoreEmulator } from "@firebase/firestore";
 
 const app = express()
-const port = 3001;
-
-//ESSENTIAL -- (type: module) har ikke scopet til den globale variable __dirname
-const filepath = dirname(fileURLToPath(import.meta.url));
-const __dirname = filepath.substring(0,filepath.length-7);
+const port = 3000;
 
 app.set('view engine', 'pug')
 app.use(session({ secret: 'hemmelig', saveUninitialized: true, resave: true }));
@@ -85,7 +74,6 @@ app.get('/menu', async (req, res) => {
 
     if(req.session.menu == undefined){
       let fetch = await getMessages();
-      console.log(fetch)
       fetch.forEach(ele =>{
       session_menu.push(ele)
     })
@@ -103,6 +91,9 @@ app.post('/postCartClientInfo', async(req, res) => {
   req.session.client_info = data;
   res.sendStatus(200)
 });
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -206,7 +197,7 @@ app.get('/contact', (req, res) => {
 //---------------------------------------------------------------------------------------------------------------------------
 
 app.get("/stripe-order-succesful&verified", (req, res) => {
-  try {
+
     let client_name = req.session.client_info.client_name;
     let client_email = req.session.client_info.client_email;
     let client_tlf = req.session.client_info.client_tlf;
@@ -224,9 +215,6 @@ app.get("/stripe-order-succesful&verified", (req, res) => {
     }
     req.session.destroy();
     res.render("pug/succes_url.pug", {total: 0, quantity: 0, name:client_name, tlf: client_tlf, email:client_email, time:client_time});
-  } catch (e) {
-    console.log(e)
-  }
 })
 
 app.get("/stripe-order-negated", (req, res) => {

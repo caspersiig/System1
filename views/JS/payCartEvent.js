@@ -15,7 +15,7 @@ date_closing.setMinutes(30);
 
 const date_open = new Date()
 date_open.setHours(15);
-date_open.setMinutes(00);
+date_open.setMinutes(30);
 
 
 
@@ -31,9 +31,11 @@ timestamp.addEventListener('change', () =>{
     console.log(date_open)
     console.log(date_closing)
 
-        if(date_open < date && date < date_closing){
+        if(date_open <= date && date <= date_closing){
             
             betalKnap.disabled = false;
+            betalKnap.style.cursor = "pointer"
+
 
                 betalKnap.addEventListener('click', async() => {
                     user_time = timestamp.value;
