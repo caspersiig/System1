@@ -227,7 +227,7 @@ async function sletField(elemt) {
 // Remove the 'capital' field from the document
 
   await setDoc(doc(db,'Menu',data[0]),
-  {[data[1]]:""}
+  {}
   )
   location.reload()
 }
@@ -238,7 +238,7 @@ async function sletDoc(elemt) {
     await deleteDoc(doc(db, "Madvogne", data[0]));
   }else{
     await setDoc(doc(db,'Menu',data[0]),
-    {[data[1]]:""}
+    {}
     )
   }
   location.reload()
