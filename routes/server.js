@@ -33,12 +33,9 @@ const filepath = dirname(fileURLToPath(import.meta.url));
 const __dirname = filepath.substring(0,filepath.length-7);
 
 app.set('view engine', 'pug')
-
 app.use(session({ secret: 'hemmelig', saveUninitialized: true, resave: true }));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static('views'));
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -71,7 +68,6 @@ app.get('/Cart', (req, res) => {
     let cart = req.session.cart || [];
     let cart_summary = cartSum(cart);
     let sorted_cart = quantity(cart); 
-
     req.session.cart = cart;
 
     res.render('pug/cart.pug', {list: sorted_cart, total: cart_summary.total, quantity: cart_summary.quantity})
@@ -103,9 +99,7 @@ app.get('/menu', async (req, res) => {
 
 app.post('/postCartClientInfo', async(req, res) => {
   let data = req.body;
-
   req.session.client_info = data;
-
   res.sendStatus(200)
 });
 
@@ -120,11 +114,7 @@ app.post('/postCartClientInfo', async(req, res) => {
 //man kan altid diskutere for at dette burde være cookies istedet for session men så igen det har vi jo ikke lært noget om
 app.post('/postdata',(req, res) => {
   let data = req.body
-
-  //console.log("Body: " + data)
-
   let cart = req.session.cart || [];
-  //console.log("Cart " + cart)  
 
   cart.push(data);
   req.session.cart = cart;
@@ -144,7 +134,6 @@ app.delete('/deleteData',(req, res) => {
     cart.splice(cart.findIndex(element => element.titel == data.titel), 1);
   }
   req.session.cart = cart;
-  
   res.sendStatus(200)
 })
 
@@ -160,9 +149,7 @@ app.post('/updateItemQuantity', (req, res) => {
   }else{
     cart.push(data.object)
   }
-
   req.session.cart = cart;
-  
   res.sendStatus(200)
 })
 
@@ -201,15 +188,11 @@ app.post('/admindata', (req, res) => {
 
 app.get('/contact', (req, res) => {
   let cart = req.session.cart || [];
-
   let cart_summary = cartSum(cart);
 
   res.render("pug/kontakt.pug", {total: cart_summary.total, quantity: cart_summary.quantity})
-
 });
-
   app.post('/send-contact-form', async (req, res) => {
-
   try {
     mailContact(req,res);
     res.send("Thanks for submitting your contact form, we will get back to you as soon as possible")
@@ -218,8 +201,6 @@ app.get('/contact', (req, res) => {
     console.log(error)
     res.sendStatus(500);
   }
-  
-
 });
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -234,9 +215,7 @@ app.get("/stripe-order-succesful&verified", (req, res) => {
     let client_time = req.session.client_info.client_time;
   
     let cart = req.session.cart || [];
-  
     let sorted_cart = quantity(cart);
-  
     let toString = cartToString(sorted_cart);
   
     try {
