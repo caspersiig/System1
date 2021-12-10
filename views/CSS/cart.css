@@ -287,6 +287,7 @@ body{
 #mobilepay {
   width: 140px;
   height: auto;
+  opacity: 0.5;
 }
 
 #mobilepay:hover {
