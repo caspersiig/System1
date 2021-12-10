@@ -1,6 +1,6 @@
 HTML 
 head 
-    title My Cart
+    title Kurv 
     link(rel="stylesheet", href="../CSS/cart.css")
     script(defer src="../JS/cancelCartEvent.js") 
     script(defer src="../JS/payCartEvent.js")
@@ -8,20 +8,17 @@ head
     script(defer src="../JS/stripeEventAction.js") 
     <script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
     <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
-
-
     include header.pug
 body
     div(id="modal")
                 div(id="modal_content") 
                     table(id="betalingsliste") 
-                        th(id="th_betal") Pay with 
+                        th(id="th_betal") Betal med 
                             tr(class="modal_tr")  
                                 <span class="close">&times;</span>
                             tr(class="modal_tr")    
                                 td(id="stripe") 
                                         img(src="/IMG/stripeLogoBlue.png" id="stripe")
-                                    
                             tr(class="modal_tr")
                                 td(id="kontant") 
                                     a(href="/stripe-order-succesful&verified" target="_blank")      
@@ -31,15 +28,14 @@ body
                                     a()
                                         img(src="/IMG/mobilepayLogo3.png" id="mobilepay")
     div(id="dent")
-    h1(id="cartTitle") Shopping cart
-
+    h1(id="cartTitle") Indkøbskurv
     div(id="body")
         table(id="table")
             tr(class="cart_tr")
-                th(id="th_product") Product 
-                th(id="th_price") Unit Price 
-                th(id="th_quantity") Quantity 
-                th(id="th_total") Total Price
+                th(id="th_product") Produkt 
+                th(id="th_price") Pr. stk.  
+                th(id="th_quantity") Antal 
+                th(id="th_total") Total pris 
             each item in list
                 tr(class="cart_tr")
                     td(class="tc_product")
@@ -67,6 +63,6 @@ body
                 div(id="betaling")
                     button(class="knap" type="submit")
                         div(id="betal_text")
-                            p(class="betal_txt")="Price: " + total + " DKK"           
+                            p(class="betal_txt")="Pri: " + total + " DKK"           
 include footer.pug 
 

@@ -26,7 +26,7 @@ import { get } from "http";
 import { connectFirestoreEmulator } from "@firebase/firestore";
 
 const app = express()
-const port = 3000
+const port = 3001;
 
 //ESSENTIAL -- (type: module) har ikke scopet til den globale variable __dirname
 const filepath = dirname(fileURLToPath(import.meta.url));
